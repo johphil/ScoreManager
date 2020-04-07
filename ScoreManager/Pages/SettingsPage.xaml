@@ -1,0 +1,87 @@
+﻿<Page x:Class="ScoreManager.Pages.SettingsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ScoreManager.Pages"
+      xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+      mc:Ignorable="d" 
+      d:DesignHeight="612" d:DesignWidth="1024"
+      Title="SettingsPage">
+    <Grid Background="White">
+        <Rectangle Fill="#FFDEDEDE" Margin="612,95,25,10" Stroke="Black"/>
+        <DockPanel LastChildFill="False" VerticalAlignment="Top" Height="65" Margin="10,10,10,0">
+            <Image DockPanel.Dock="Left" Height="50" VerticalAlignment="Center" Width="50" Source="/ScoreManager;component/img/btn-settings.png"/>
+            <TextBlock Text="SETTINGS AND PREFERENCES" DockPanel.Dock="Left" VerticalAlignment="Center" Margin="10" Style="{StaticResource txtHeader1}"/>
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Right">
+                <Button x:Name="btnConfigExam" Width="70" BorderBrush="{x:Null}" Background="{x:Null}" Cursor="Hand" Click="BtnConfigExam_Click">
+                    <StackPanel Orientation="Vertical">
+                        <Image Source="/ScoreManager;component/img/btn-exam-config.png" Height="40"/>
+                        <TextBlock Text="EXAM CONFIG" VerticalAlignment="Center" TextAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" />
+                    </StackPanel>
+                </Button>
+                <Button x:Name="btnTermConfig" Width="70" BorderBrush="{x:Null}" Background="{x:Null}" Cursor="Hand" Click="BtnTermConfig_Click">
+                    <StackPanel Orientation="Vertical">
+                        <Image Source="/ScoreManager;component/img/btn-term-config.png" Height="40"/>
+                        <TextBlock Text="TERM CONFIG" VerticalAlignment="Center" TextAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" />
+                    </StackPanel>
+                </Button>
+                <Button x:Name="btnManual" Width="70" BorderBrush="{x:Null}" Background="{x:Null}" Cursor="Hand">
+                    <StackPanel Orientation="Vertical">
+                        <Image Source="/ScoreManager;component/img/btn-guide.png" Height="40"/>
+                        <TextBlock Text="USER GUIDE" VerticalAlignment="Center" TextAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" />
+                    </StackPanel>
+                </Button>
+                <Button x:Name="btnDeactivate" Width="70" BorderBrush="{x:Null}" Background="{x:Null}" Cursor="Hand" Click="BtnDeactivate_Click">
+                    <StackPanel Orientation="Vertical">
+                        <Image Source="/ScoreManager;component/img/btn-deactivate.png" Height="40"/>
+                        <TextBlock Text="DEACTIVATE" VerticalAlignment="Center" TextAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" />
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </DockPanel>
+        <TextBlock HorizontalAlignment="Left" Margin="633,110,0,0" TextWrapping="Wrap" Text="A MICROSOFT .NET TECHNOLOGY 1 PROJECT" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
+        <TextBlock HorizontalAlignment="Left" Margin="634,323,0,0" TextWrapping="Wrap" Text="APP NAME  : " VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="634,343,0,0" TextWrapping="Wrap" Text="APP VERSION  : " VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="634,365,0,0" TextWrapping="Wrap" Text="LICENSED TO  : " VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="634,385,0,0" TextWrapping="Wrap" Text="EMAIL  : " VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="634,572,0,24" TextWrapping="Wrap" Text="All rights reserved." FontStyle="Italic"/>
+        <Image HorizontalAlignment="Left" Height="123" Margin="864,455,0,0" VerticalAlignment="Top" Width="111" Source="/ScoreManager;component/img/logo-mapua.png"/>
+        <TextBlock x:Name="txtAppName" HorizontalAlignment="Left" Margin="732,323,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="&lt;&gt;"/>
+        <TextBlock x:Name="txtAppVersion" HorizontalAlignment="Left" Margin="732,343,0,0" TextWrapping="Wrap" Text="&lt;&gt;" VerticalAlignment="Top"/>
+        <TextBlock x:Name="txtLicense" HorizontalAlignment="Left" Margin="732,365,0,0" TextWrapping="Wrap" Text="&lt;&gt;" VerticalAlignment="Top"/>
+        <TextBlock x:Name="txtEmail" HorizontalAlignment="Left" Margin="732,385,0,0" TextWrapping="Wrap" Text="&lt;&gt;" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="633,175,0,0" TextWrapping="Wrap" Text="Developers:  GROUP 4" VerticalAlignment="Top" FontStyle="Italic"/>
+        <TextBlock HorizontalAlignment="Left" Margin="633,153,0,0" TextWrapping="Wrap" Text="Instructor:    Engr. Analyn Yumang" VerticalAlignment="Top" FontStyle="Italic"/>
+        <TextBlock HorizontalAlignment="Left" Margin="698,197,0,0" TextWrapping="Wrap" Text="Encarnacion, John Philip, CPE 4" VerticalAlignment="Top" FontStyle="Italic" Width="277"/>
+        <TextBlock Margin="698,217,49,0" TextWrapping="Wrap" Text="Rodriguez, Robert Charles, CPE 4" VerticalAlignment="Top" FontStyle="Italic"/>
+        <TextBlock HorizontalAlignment="Left" Margin="698,239,0,0" TextWrapping="Wrap" Text="Laab, Charles Daniel, CPE 4" VerticalAlignment="Top" FontStyle="Italic" Width="277"/>
+        <Separator HorizontalAlignment="Left" Height="44" Margin="633,260,0,0" VerticalAlignment="Top" Width="342"/>
+        <Grid Margin="10,95,417,10" Background="Gainsboro">
+            <TextBlock HorizontalAlignment="Left" Style="{StaticResource txtHeader3}" Margin="10,10,0,0" TextWrapping="Wrap" Text="EMAIL SETTINGS" VerticalAlignment="Top"/>
+            <xctk:WatermarkTextBox Watermark="Email must be @gmail.com" HorizontalAlignment="Left" Height="27" Margin="81,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="275"/>
+            <TextBlock HorizontalAlignment="Left" Margin="10,55,0,0" Style="{StaticResource txtNormal}" TextWrapping="Wrap" Text="EMAIL: " VerticalAlignment="Top"/>
+        </Grid>
+        <Grid Margin="10,95,417,10" Background="Gainsboro">
+            <TextBlock HorizontalAlignment="Left" Style="{StaticResource ResourceKey=txtHeader3}" Margin="10,10,0,0" TextWrapping="Wrap" Text="EMAIL SETTINGS" VerticalAlignment="Top"/>
+            <xctk:WatermarkTextBox x:Name="tbEmailAddress" Watermark="Email address must be using @gmail.com" Height="27" Margin="154,55,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+            <TextBlock Margin="10,55,448,0" Style="{StaticResource txtNormal}" TextWrapping="Wrap" Text="Email Address: " VerticalAlignment="Top"/>
+            <TextBlock Margin="10,87,448,0" Style="{StaticResource txtNormal}" TextWrapping="Wrap" Text="Password: " VerticalAlignment="Top"/>
+            <xctk:WatermarkPasswordBox x:Name="tbPassword" Watermark="Enter the password for the email above." Height="27" Margin="154,87,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+            <TextBlock Margin="10,119,448,0" Style="{StaticResource txtNormal}" TextWrapping="Wrap" Text="Email Footer: " VerticalAlignment="Top"/>
+            <Button x:Name="btnSave" BorderBrush="{x:Null}" Background="{x:Null}" Cursor="Hand" Click="BtnSave_Click" Margin="517,358,10,84">
+                <StackPanel Orientation="Vertical">
+                    <Image Source="/ScoreManager;component/img/btn-save.png" Height="40"/>
+                    <TextBlock Text="SAVE" VerticalAlignment="Center" TextAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" />
+                </StackPanel>
+            </Button>
+            <RichTextBox x:Name="tbFooter" Height="234" Margin="154,119,10,0" VerticalAlignment="Top">
+                <FlowDocument>
+                    <Paragraph>
+                        <Run Text=""/>
+                    </Paragraph>
+                </FlowDocument>
+            </RichTextBox>
+        </Grid>
+    </Grid>
+</Page>

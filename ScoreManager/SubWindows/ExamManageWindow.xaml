@@ -1,0 +1,62 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ScoreManager.SubWindows"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="ScoreManager.SubWindows.ExamManageWindow"
+        mc:Ignorable="d"
+        Title="Manage Exams" Height="574.894" Width="890.572" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Rectangle Fill="#FFDEDEDE" Margin="0,444,0,0"/>
+        <DataGrid x:Name="dgExams" BorderBrush="#FF959595" DockPanel.Dock="Left" IsReadOnly="True" SelectionMode="Single" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Disabled" RowHeaderWidth="0" Margin="10,10,0,107" SelectionChanged="DgExams_SelectionChanged" HorizontalAlignment="Left" Width="278">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="260" Header="EXAMS" Binding="{Binding NAME}">
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="{x:Type DataGridCell}">
+                            <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                            <Setter Property="FontSize" Value="14"/>
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid x:Name="dgTerms" BorderBrush="#FF959595" DockPanel.Dock="Right" IsReadOnly="True" SelectionMode="Single" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Disabled" RowHeaderWidth="0" Margin="296,10,0,107" HorizontalAlignment="Left" Width="278">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="260" Header="TERMS" Binding="{Binding TERM}">
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="{x:Type DataGridCell}">
+                            <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                            <Setter Property="FontSize" Value="14"/>
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBlock Margin="10,462,0,0" Style="{StaticResource ResourceKey=txtNormal}" TextWrapping="Wrap" Text="ADD EXAM" VerticalAlignment="Top" HorizontalAlignment="Left" Width="94"/>
+        <xctk:WatermarkTextBox x:Name="tbExamName" Watermark="Enter Name of Exam" Height="27" Margin="109,461,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="179"/>
+        <TextBlock Margin="296,461,0,0" Style="{StaticResource ResourceKey=txtNormal}" TextWrapping="Wrap" Text="ADD TERM" VerticalAlignment="Top" HorizontalAlignment="Left" Width="92"/>
+        <xctk:WatermarkComboBox x:Name="cbTerm" Watermark="Select Term" Margin="393,461,0,0" IsEditable="True" VerticalContentAlignment="Center" Padding="5,2,2,2" FontSize="14" Height="27" VerticalAlignment="Top" HorizontalAlignment="Left" Width="151"/>
+        <Button x:Name="btnTerms" Content="＋" Style="{StaticResource btnBlue}" VerticalAlignment="Top" Margin="549,461,0,0" Height="27" Click="BtnTerms_Click" HorizontalAlignment="Left" Width="25"/>
+        <Button x:Name="btnOkTerm" Content="OK" Style="{StaticResource btnGreen}" VerticalAlignment="Top" Margin="502,493,0,0" Height="27" FontWeight="Bold" Click="BtnOkTerm_Click" HorizontalAlignment="Left" Width="42"/>
+        <Button x:Name="btnRemoveTerm" Content="REMOVE" Style="{StaticResource btnRed}" VerticalAlignment="Top" Margin="393,493,0,0" Height="27" FontWeight="Bold" Click="BtnRemoveTerm_Click" HorizontalAlignment="Left" Width="90"/>
+        <Button x:Name="btnOkExam" Content="OK" Style="{StaticResource btnGreen}" VerticalAlignment="Top" Margin="246,493,0,0" Height="27" FontWeight="Bold" Click="BtnOkExam_Click" HorizontalAlignment="Left" Width="42"/>
+        <Button x:Name="btnRemoveExam" Content="REMOVE" Style="{StaticResource btnRed}" VerticalAlignment="Top" Margin="109,493,0,0" Height="27" FontWeight="Bold" Click="BtnRemoveExam_Click" HorizontalAlignment="Left" Width="90"/>
+        <DataGrid x:Name="dgSubjects" BorderBrush="#FF959595" IsReadOnly="True" SelectionMode="Single" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Disabled" RowHeaderWidth="0" Margin="582,10,0,107" HorizontalAlignment="Left" Width="278">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="260" Header="SUBJECTS" Binding="{Binding CODE}">
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="{x:Type DataGridCell}">
+                            <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                            <Setter Property="FontSize" Value="14"/>
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBlock Margin="582,461,0,0" Style="{StaticResource ResourceKey=txtNormal}" TextWrapping="Wrap" Text="SUBJECT" VerticalAlignment="Top" HorizontalAlignment="Left" Width="94"/>
+        <xctk:WatermarkTextBox x:Name="tbSubject" Watermark="Enter Name of Subject" Height="27" Margin="681,461,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="179"/>
+        <Button x:Name="btnOkSubject" Content="OK" Style="{StaticResource btnGreen}" VerticalAlignment="Top" Margin="818,493,0,0" Height="27" FontWeight="Bold" HorizontalAlignment="Left" Width="42" Click="BtnOkSubject_Click"/>
+        <Button x:Name="btnRemoveSubject" Content="REMOVE" Style="{StaticResource btnRed}" VerticalAlignment="Top" Margin="681,493,0,0" Height="27" FontWeight="Bold" HorizontalAlignment="Left" Width="90" Click="BtnRemoveSubject_Click"/>
+    </Grid>
+</Window>

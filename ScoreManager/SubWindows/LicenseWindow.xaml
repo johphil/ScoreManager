@@ -1,0 +1,17 @@
+﻿<Window x:Class="ScoreManager.SubWindows.LicenseWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ScoreManager.SubWindows"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        mc:Ignorable="d"
+        Title="License" Height="144.914" Width="375.742" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <xctk:WatermarkTextBox x:Name="tbLicense" Watermark="Enter License Key" Height="27" Margin="114,25,0,0" VerticalAlignment="Top" CharacterCasing="Upper" HorizontalAlignment="Left" Width="217"/>
+        <TextBlock Style="{StaticResource txtNormal}" Margin="10,25,0,0" TextWrapping="Wrap" Text="License Key" VerticalAlignment="Top" HorizontalAlignment="Left" Width="104"/>
+        <Button x:Name="btnActivate" Content="Activate" Style="{StaticResource btnGreen}" Margin="256,57,0,0" VerticalAlignment="Top" Height="29" Click="BtnActivate_Click" HorizontalAlignment="Left" Width="75" IsDefault="True"/>
+        <TextBlock x:Name="btnRequest" HorizontalAlignment="Left" Margin="124,64,0,0" TextWrapping="Wrap" Text="Request Activation Key" Height="16" VerticalAlignment="Top" TextDecorations="Underline" FontStyle="Italic" Cursor="Hand" MouseDown="BtnRequest_MouseDown"/>
+
+    </Grid>
+</Window>

@@ -1,0 +1,17 @@
+﻿<Window x:Class="ScoreManager.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ScoreManager"
+        mc:Ignorable="d"
+        Title="Login" Height="208.667" Width="400" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Closing="Window_Closing">
+    <Grid Background="Red">
+        <TextBlock HorizontalAlignment="Left" Margin="224,18,0,0" TextWrapping="Wrap" Text="Login" VerticalAlignment="Top" Width="74" Foreground="White"/>
+        <TextBlock HorizontalAlignment="Left" Margin="224,63,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Foreground="White"/>
+        <TextBox x:Name="tbUsername" HorizontalAlignment="Left" Height="24" Margin="224,34,0,0" VerticalAlignment="Top" Width="136" VerticalContentAlignment="Center" TabIndex="0" MaxLength="20"/>
+        <PasswordBox x:Name="tbPassword" HorizontalAlignment="Left" Margin="224,79,0,0" VerticalAlignment="Top" Width="136" Height="24" VerticalContentAlignment="Center" PasswordChar="*" TabIndex="1"/>
+        <Button x:Name="btnLogin" Style="{StaticResource btnNormal}" Content="L O G I N" HorizontalAlignment="Left" Margin="224,117,0,0" VerticalAlignment="Top" Width="136" Height="24" IsDefault="True" IsTabStop="False" Click="BtnLogin_Click" Background="#FFF8FF66" FontFamily="Century"/>
+        <Image HorizontalAlignment="Left" Margin="29,10,0,10" Width="160" Source="img/logo.jpg"/>
+    </Grid>
+</Window>
