@@ -22,7 +22,7 @@
                 <Button x:Name="btnEmail" Width="70" BorderBrush="{x:Null}" Background="{x:Null}" Cursor="Hand" IsTabStop="False" Click="BtnEmail_ClickAsync">
                     <StackPanel Orientation="Vertical">
                         <Image Source="/ScoreManager;component/img/btn-send-single.png" Height="40"/>
-                        <TextBlock Text="EMAIL" VerticalAlignment="Center" TextAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" />
+                        <TextBlock Text="MAIL SCORE" VerticalAlignment="Center" TextAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" />
                     </StackPanel>
                 </Button>
             </StackPanel>

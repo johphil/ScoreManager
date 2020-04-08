@@ -55,7 +55,7 @@ namespace ScoreManager
                                 tbPassword.Focus();
                                 break;
                             }
-                        case Globals.SQL_ERROR:
+                        case Globals.ERROR:
                             {
                                 MessageBox.Show("Program is corrupted please contact developer.", "Corrupted", MessageBoxButton.OK, MessageBoxImage.Error);
                                 Application.Current.Shutdown();

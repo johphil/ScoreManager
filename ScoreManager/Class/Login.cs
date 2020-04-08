@@ -41,7 +41,7 @@ namespace ScoreManager.Class
             catch (SQLiteException ex)
             {
                 MessageBox.Show(ex.Message, "Database Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return Globals.SQL_ERROR;
+                return Globals.ERROR;
             }
         }
     }

@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Data;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -37,6 +40,7 @@ namespace ScoreManager.Pages
         Class.Grade gClass = new Class.Grade();
         Class.Student stClass = new Class.Student();
         Class.Subject sClass = new Class.Subject();
+        Class.Logging log = new Class.Logging();
         Models._Exam _e = new Models._Exam();
         Models._Term _t = new Models._Term();
         Models._Grade _g = new Models._Grade();
@@ -47,6 +51,7 @@ namespace ScoreManager.Pages
         ObservableCollection<Models._Student> _studTable = new ObservableCollection<Models._Student>();
         ObservableCollection<Models._Subject> _subjTable = new ObservableCollection<Models._Subject>();
         DataTable dtResult, dtResultfromDb;
+        List<string> lScores = new List<string>();
 
         private void LoadExamTable()
         {
@@ -113,7 +118,10 @@ namespace ScoreManager.Pages
                             for (int j = 0; j < _subjTable.Count; j++)
                             {
                                 if (dtResultfromDb.Rows.Count > j + offset)
+                                {
                                     row[_subjTable[j].CODE] = dtResultfromDb.Rows[j + offset][2];
+                                    lScores.Add(dtResultfromDb.Rows[j + offset][2].ToString());
+                                }
                             }
                             offset += _subjTable.Count;
                         }
@@ -127,6 +135,160 @@ namespace ScoreManager.Pages
             {
                 dgResults.Columns.Clear();
                 dgResults.ItemsSource = null;
+            }
+        }
+
+        private void SendEmailGroup()
+        {
+            Class.Email emClass = new Class.Email();
+            emClass.LoadEmailSettings(out int UseMail, out string EmailAddr1, out string EmailPass1, out string EmailAddr2, out string EmailPass2, out string EmailFoot);
+
+            string EmailAddr = "";
+            string EmailPass = "";
+
+            switch(UseMail)
+            {
+                case Globals.USE_EMAIL_GMAIL:
+                    {
+                        EmailAddr = EmailAddr1;
+                        EmailPass = EmailPass1;
+                        break;
+                    }
+                case Globals.USE_EMAIL_MAPUA:
+                    {
+                        EmailAddr = EmailAddr2;
+                        EmailPass = EmailPass2;
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
+            }
+
+            if (string.IsNullOrEmpty(EmailAddr) || string.IsNullOrWhiteSpace(EmailPass))
+            {
+                MessageBox.Show("Email Settings is not set. Please go to settings and update the email info.", "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
+            else
+            {
+                if (dgExams.SelectedIndex != -1 && dgTerms.SelectedIndex != -1 && _studTable != null)
+                {
+                    string confirmationmsg = "";
+                    for(int i = 0; i < _studTable.Count; i++)
+                    {
+                        confirmationmsg += String.Format("{0} {1}\n", _studTable[i].ID, _studTable[i].NAME);
+                    }
+                    if (MessageBox.Show(String.Format("Email will be sent to {0} students. \n\n{1}\n\nDo you want to proceed?", _studTable.Count, confirmationmsg), "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Information, MessageBoxResult.Yes) == MessageBoxResult.Yes)
+                    {
+                        string Result = "";
+                        if (lScores.Count != 0)
+                        {
+                            //Declare a new BackgroundWorker
+                            BackgroundWorker worker = new BackgroundWorker();
+                            List<Models._Student> lErrorMails = new List<Models._Student>();
+                            List<string> lErrorInfo = new List<string>();
+
+                            worker.DoWork += (o, ea) =>
+                            {
+                                string subject = String.Format("{0} {1} {2}", Globals.EmailSubject, _e.NAME, _t.TERM);
+                                string scores = "";
+
+                                int offset = 0;
+                                List<string> lStudentEmails = new List<string>();
+                                bool isSuccess = false;
+                                bool hasError = false;
+
+                                for (int x = 0; x < _studTable.Count; x++)
+                                {
+                                    scores = "";
+
+                                    try
+                                    {
+                                        for (int i = 0; i < _subjTable.Count; i++)
+                                        {
+                                            scores += String.Format("{0} = {1}\n", _subjTable[i].CODE, lScores[i + offset].ToString());
+                                        }
+                                    }
+                                    catch
+                                    {
+                                        lErrorMails.Add(_studTable[x]);
+                                        lErrorInfo.Add("Score not set.");
+                                        hasError = true;
+                                    }
+
+                                    offset += _subjTable.Count;
+
+                                    string body = String.Format("{0} {1} \n\n{2}\n\n{3}\n\n{4}"
+                                        , _e.NAME
+                                        , _t.TERM
+                                        , _studTable[x].NAME + "\n" + _studTable[x].ID + "\n" + _studTable[x].PROGRAM
+                                        , scores
+                                        , EmailFoot
+                                        );
+                                    
+                                    isSuccess = emClass.SendMail(UseMail, EmailAddr, EmailPass, _studTable[x].EMAIL, subject, body);
+
+                                    if (!isSuccess)
+                                    {
+                                        lErrorMails.Add(_studTable[x]);
+                                        lErrorInfo.Add("Invalid Email.");
+                                        hasError = true;
+                                    }
+                                    
+                                    int percent = (int)(((double)(x + 1) / _studTable.Count) * 1000);
+                                    worker.ReportProgress(percent, String.Format("{0} / {1}", x+1, _studTable.Count));
+                                }
+
+                                if (lErrorMails.Count > 0)
+                                {
+                                    string ErrorFile = String.Format("{0}_{1}_{2}.txt", _e.NAME, _t.TERM, DateTime.Now.ToShortDateString() + DateTime.Now.ToLongTimeString());
+                                    ErrorFile = ErrorFile.Replace("/", "");
+                                    ErrorFile = ErrorFile.Replace(":", "");
+                                    ErrorFile = ErrorFile.Replace(" ", "");
+                                    Result = "Errors Found:\n"; 
+                                    for (int i = 0; i < lErrorMails.Count; i++)
+                                    {
+                                        Result += String.Format("{0}. [{1} {2}] {3} \n\n", i+1, lErrorMails[i].ID, lErrorMails[i].NAME, lErrorInfo[i]);
+                                    }
+                                    log.WriteToFileErrors(ErrorFile, Result);
+                                    Result += String.Format("Error saved at {0}{1}",Globals.PATH_EMAIL_ERRORS, ErrorFile);
+                                }
+                                else
+                                {
+                                    Result = "Emails successfuly sent! No Errors.";
+                                }
+
+                                MessageBox.Show(Result, "Email Result", MessageBoxButton.OK, MessageBoxImage.Information);
+                            };
+
+                            worker.WorkerReportsProgress = true;
+
+                            worker.ProgressChanged += (o, ea) =>
+                            {
+                                progressBar.Value = ea.ProgressPercentage;
+                                txtSendStatus.Text = (string)ea.UserState;
+                            };
+
+                            worker.RunWorkerCompleted += (o, ea) =>
+                            {
+                                txtSendStatus.Text = "";
+                                progressBar.Value = 0;
+                                this.IsEnabled = true;
+                            };
+
+                            txtSendStatus.Text = "Sending...";
+                            this.IsEnabled = false;
+                            worker.RunWorkerAsync();
+
+                            Result = "Email has been sent successfully!";
+                        }
+                        else
+                            MessageBox.Show("Scores for this exam are not yet set. Kindly go to Scores Page and update this student's scores and try again.", "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    }
+                }
+                else
+                    MessageBox.Show("Please select enter the student number, select the exam/class and term to be emailed and try again.", "Try Again", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
         }
         /******************************************************************************/
@@ -175,7 +337,7 @@ namespace ScoreManager.Pages
 
         private void BtnEmailMultiple_Click(object sender, RoutedEventArgs e)
         {
-
+            SendEmailGroup();
         }
 
         private void BtnScores_Click(object sender, RoutedEventArgs e)

@@ -71,7 +71,7 @@ namespace ScoreManager
             }
             catch
             {
-                return Globals.SQL_ERROR.ToString();
+                return Globals.ERROR.ToString();
             }
         }
 
@@ -97,8 +97,8 @@ namespace ScoreManager
                             }
                             else
                             {
-                                Name = Globals.SQL_ERROR.ToString();
-                                Email = Globals.SQL_ERROR.ToString();
+                                Name = Globals.ERROR.ToString();
+                                Email = Globals.ERROR.ToString();
                             }
                         }
                     }
@@ -106,8 +106,8 @@ namespace ScoreManager
             }
             catch
             {
-                Name = Globals.SQL_ERROR.ToString();
-                Email = Globals.SQL_ERROR.ToString();
+                Name = Globals.ERROR.ToString();
+                Email = Globals.ERROR.ToString();
             }
         }
 

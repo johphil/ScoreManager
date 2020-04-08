@@ -36,9 +36,33 @@ namespace ScoreManager.Pages
             txtAppVersion.Text = Application.ResourceAssembly.GetName().Version.ToString();
             txtLicense.Text = name;
             txtEmail.Text = email;
-            emClass.LoadEmailSettings(out string EmailAddr, out string EmailPass, out string EmailFoot);
-            tbEmailAddress.Text = EmailAddr;
-            tbPassword.Password = EmailPass;
+            emClass.LoadEmailSettings(out int UseMail, out string EmailAddr1, out string EmailPass1, out string EmailAddr2, out string EmailPass2, out string EmailFoot);
+
+            switch (UseMail)
+            {
+                case Globals.USE_EMAIL_GMAIL:
+                    {
+                        rbGmail.IsChecked = true;
+                        break;
+                    }
+                case Globals.USE_EMAIL_MAPUA:
+                    {
+                        rbMapuaMail.IsChecked = true;
+                        break;
+                    }
+                default:
+                    {
+                        rbGmail.IsChecked = false;
+                        rbMapuaMail.IsChecked = false;
+                        break;
+                    }
+            }
+
+            tbEmailAddress1.Text = EmailAddr1;
+            tbPassword1.Password = EmailPass1;
+            tbEmailAddress2.Text = EmailAddr2;
+            tbPassword2.Password = EmailPass2;
+
             tbFooter.AppendText(EmailFoot);
         }
 
@@ -77,7 +101,16 @@ namespace ScoreManager.Pages
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
             string footer = new TextRange(tbFooter.Document.ContentStart, tbFooter.Document.ContentEnd).Text;
-            emClass.SaveEmailSettings(tbEmailAddress.Text, tbPassword.Password, footer);
+            int useMail;
+
+            if (rbGmail.IsChecked == true)
+                useMail = Globals.USE_EMAIL_GMAIL;
+            else if (rbMapuaMail.IsChecked == true)
+                useMail = Globals.USE_EMAIL_MAPUA;
+            else
+                useMail = Globals.ERROR;
+
+            emClass.SaveEmailSettings(useMail, tbEmailAddress1.Text, tbPassword1.Password, tbEmailAddress2.Text, tbPassword2.Password, footer);
             MessageBox.Show("Saved Successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }

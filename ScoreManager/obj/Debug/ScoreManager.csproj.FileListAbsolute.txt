@@ -63,3 +63,4 @@ C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManager\bin\Debug\Microsoft.WindowsAPICo
 C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManager\bin\Debug\Microsoft.WindowsAPICodePack.Shell.xml
 C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManager\obj\Debug\SubWindows\DeactivateWindow.g.cs
 C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManager\obj\Debug\SubWindows\DeactivateWindow.baml
+C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManager\obj\Debug\ScoreManager.csprojAssemblyReference.cache

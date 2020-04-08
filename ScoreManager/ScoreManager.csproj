@@ -89,6 +89,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Class\Email.cs" />
+    <Compile Include="Class\Logging.cs" />
     <Compile Include="Class\Term.cs" />
     <Compile Include="License.cs" />
     <Compile Include="Models\_Term.cs" />

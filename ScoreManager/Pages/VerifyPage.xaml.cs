@@ -115,7 +115,30 @@ namespace ScoreManager.Pages
         private void SendEmail()
         {
             Class.Email emClass = new Class.Email();
-            emClass.LoadEmailSettings(out string EmailAddr, out string EmailPass, out string EmailFoot);
+            emClass.LoadEmailSettings(out int UseMail, out string EmailAddr1, out string EmailPass1, out string EmailAddr2, out string EmailPass2, out string EmailFoot);
+
+            string EmailAddr = "";
+            string EmailPass = "";
+
+            switch (UseMail)
+            {
+                case Globals.USE_EMAIL_GMAIL:
+                    {
+                        EmailAddr = EmailAddr1;
+                        EmailPass = EmailPass1;
+                        break;
+                    }
+                case Globals.USE_EMAIL_MAPUA:
+                    {
+                        EmailAddr = EmailAddr2;
+                        EmailPass = EmailPass2;
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
+            }
 
             if (string.IsNullOrEmpty(EmailAddr) || string.IsNullOrWhiteSpace(EmailPass))
             {
@@ -135,41 +158,32 @@ namespace ScoreManager.Pages
 
                             worker.DoWork += (o, ea) =>
                             {
-                                try
+                                string subject = String.Format("{0} {1} {2}", Globals.EmailSubject, _e.NAME, _t.TERM);
+                                string scores = "";
+
+                                for (int i = 0; i < _subjTable.Count; i++)
                                 {
-                                    var client = new SmtpClient("smtp.gmail.com", 587)
-                                    {
-                                        UseDefaultCredentials = false,
-                                        DeliveryMethod = SmtpDeliveryMethod.Network,
-                                        Credentials = new NetworkCredential(EmailAddr, EmailPass),
-                                        EnableSsl = true
-                                    };
-                                    string subject = String.Format("{0} {1} {2}", Globals.EmailSubject, _e.NAME, _t.TERM);
-                                    string scores = "";
-
-                                    for (int i = 0; i < _subjTable.Count; i++)
-                                    {
-                                        scores += String.Format("{0} = {1}\n", _subjTable[i].CODE, lScores[i].ToString());
-                                    }
-                                    string body = String.Format("{0} {1} \n\n{2}\n\n{3}\n\n{4}"
-                                        , _e.NAME
-                                        , _t.TERM
-                                        , _st.NAME + "\n" + _st.ID + "\n" + _st.PROGRAM
-                                        , scores
-                                        , EmailFoot
-                                        );
-
-                                    client.Send(EmailAddr, _st.EMAIL, subject, body);
+                                    scores += String.Format("{0} = {1}\n", _subjTable[i].CODE, lScores[i].ToString());
                                 }
-                                catch
-                                {
+                                string body = String.Format("{0} {1} \n\n{2}\n\n{3}\n\n{4}"
+                                    , _e.NAME
+                                    , _t.TERM
+                                    , _st.NAME + "\n" + _st.ID + "\n" + _st.PROGRAM
+                                    , scores
+                                    , EmailFoot
+                                    );
+                                
+                                bool isSuccess = false;
+
+                                isSuccess = emClass.SendMail(UseMail, EmailAddr, EmailPass, _st.EMAIL, subject, body);
+
+                                if (isSuccess)
+                                    Result = "Email has been sent successfully!";
+                                else
                                     Result = "Email has failed!";
-                                }
-                                finally
-                                {
 
-                                    MessageBox.Show(Result, "Email Status", MessageBoxButton.OK, MessageBoxImage.Information); ;
-                                }
+
+                                MessageBox.Show(Result, "Email Status", MessageBoxButton.OK, MessageBoxImage.Information); 
                             };
                                 
                             worker.RunWorkerCompleted += (o, ea) =>
@@ -181,8 +195,6 @@ namespace ScoreManager.Pages
                             txtSendStatus.Text = "Sending...";
                             this.IsEnabled = false;
                             worker.RunWorkerAsync();
-                                
-                            Result = "Email has been sent successfully!";
                         }
                         else
                             MessageBox.Show("Scores for this exam are not yet set. Kindly go to Scores Page and update this student's scores and try again.", "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
@@ -250,6 +262,7 @@ namespace ScoreManager.Pages
         private void BtnEmail_ClickAsync(object sender, RoutedEventArgs e)
         {
             SendEmail();
+            //SendMailOffice365();
         }
     }
 }
