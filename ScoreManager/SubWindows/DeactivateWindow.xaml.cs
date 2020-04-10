@@ -23,6 +23,7 @@ namespace ScoreManager.SubWindows
         string License = "";
         public bool isDeactivate = false;
         string Email = "";
+
         public DeactivateWindow()
         {
             InitializeComponent();
@@ -38,7 +39,8 @@ namespace ScoreManager.SubWindows
             tbLicense.Focus();
         }
 
-        private void BtnDeactivate_Click(object sender, RoutedEventArgs e)
+        /*******************************************************************************************/
+        private async void Deactivate()
         {
             Class.Email emClass = new Class.Email();
 
@@ -47,20 +49,31 @@ namespace ScoreManager.SubWindows
                 if (License != tbLicense.Text.Trim())
                 {
                     MessageBox.Show("The License you entered is incorrect.", "Incorrect License Key", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    this.IsEnabled = true;
                 }
                 else if (License == tbLicense.Text.Trim())
                 {
                     if (lClass.IsFirebaseConnected())
                     {
-                        lClass.DeactivateFirebase(License);
+                        await lClass.DeactivateFirebase(License);
                         lClass.Deactivate(License);
-                        emClass.SendMail(Globals.USE_EMAIL_GMAIL, Globals.EmailSenderUsername, Globals.EmailSenderPassword, Email, "Score Manager License Deactivated", Globals.MSG_DEACTIVATE);
+                        await emClass.SendMail(Globals.USE_EMAIL_GMAIL, Globals.EmailSenderUsername, Globals.EmailSenderPassword, Email, "Score Manager License Deactivated", Globals.MSG_DEACTIVATE);
                         MessageBox.Show(String.Format("Your License: {0}, has been deactivated. \nYou will be redirected to login screen.", License), "Deactivate Success", MessageBoxButton.OK, MessageBoxImage.Information);
                         isDeactivate = true;
                         this.Close();
                     }
                 }
             }
+            else
+                this.IsEnabled = false;
         }
+        /*******************************************************************************************/
+
+        private void BtnDeactivate_Click(object sender, RoutedEventArgs e)
+        {
+            this.IsEnabled = false;
+            Deactivate();
+        }
+
     }
 }

@@ -27,8 +27,7 @@ namespace ScoreManager.SubWindows
         /************************************************************************/
         Class.Email emClass = new Class.Email();
 
-        /************************************************************************/
-        private void BtnSubmit_Click(object sender, RoutedEventArgs e)
+        private async void Register()
         {
             if (string.IsNullOrWhiteSpace(tbUsername.Text) ||
                 string.IsNullOrWhiteSpace(tbPassword.Text) ||
@@ -36,12 +35,13 @@ namespace ScoreManager.SubWindows
                 string.IsNullOrWhiteSpace(tbEmail.Text))
             {
                 MessageBox.Show("Fill up all the fields and try again.", "Try Again", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                this.IsEnabled = true;
             }
             else
             {
                 string body = String.Format("User's Info: \nNAME: {0}\nEMAIL: {1}\n\nLogin Info: \nUSERNAME: {2} \nPASSWORD: {3}", tbName.Text.Trim(), tbEmail.Text.Trim(), tbUsername.Text.Trim(), tbPassword.Password);
-
-                if (emClass.SendMail(Globals.USE_EMAIL_GMAIL, Globals.EmailSenderUsername, Globals.EmailSenderPassword, Globals.EmailDev, "Score Manager Registration", body))
+                await emClass.SendMail(Globals.USE_EMAIL_GMAIL, Globals.EmailSenderUsername, Globals.EmailSenderPassword, Globals.EmailDev, "Score Manager Registration", body);
+                if (emClass.isSuccessSendMail)
                 {
                     MessageBox.Show("Registration Success! \nPlease wait for the developers to notice your request. Thank you.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                     this.Close();
@@ -49,8 +49,17 @@ namespace ScoreManager.SubWindows
                 else
                 {
                     MessageBox.Show("Internet connection may not be available. If this problem persists, contact developer.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    this.IsEnabled = true;
                 }
             }
+        }
+
+        /************************************************************************/
+
+        private void BtnSubmit_Click(object sender, RoutedEventArgs e)
+        {
+            this.IsEnabled = false;
+            Register();
         }
     }
 }

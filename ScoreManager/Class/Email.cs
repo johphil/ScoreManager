@@ -14,6 +14,8 @@ namespace ScoreManager.Class
 {
     class Email
     {
+        public bool isSuccessSendMail { get; set; }
+
         public void LoadEmailSettings(out int UseMail, out string EmailAddress1, out string EmailPassword1, out string EmailAddress2, out string EmailPassword2, out string EmailFooter)
         {
             try
@@ -89,7 +91,7 @@ namespace ScoreManager.Class
             }
         }
 
-        public bool SendMail(int UseMail, string EmailFromAddr, string EmailFromPass, string EmailToAddr, string Subject, string Body)
+        public async Task SendMail(int UseMail, string EmailFromAddr, string EmailFromPass, string EmailToAddr, string Subject, string Body)
         {
             string smtp;
             switch(UseMail)
@@ -121,12 +123,16 @@ namespace ScoreManager.Class
                     EnableSsl = true
                 };
 
-                client.Send(EmailFromAddr, EmailToAddr, Subject, Body);
-                return true;
+                using (client)
+                {
+                    await client.SendMailAsync(EmailFromAddr, EmailToAddr, Subject, Body);
+                }
+
+                isSuccessSendMail = true;
             }
             catch
             {
-                return false;
+                isSuccessSendMail = false;
             }
         }
 

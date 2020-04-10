@@ -156,7 +156,7 @@ namespace ScoreManager.Pages
                             //Declare a new BackgroundWorker
                             BackgroundWorker worker = new BackgroundWorker();
 
-                            worker.DoWork += (o, ea) =>
+                            worker.DoWork += async (o, ea) =>
                             {
                                 string subject = String.Format("{0} {1} {2}", Globals.EmailSubject, _e.NAME, _t.TERM);
                                 string scores = "";
@@ -174,8 +174,8 @@ namespace ScoreManager.Pages
                                     );
                                 
                                 bool isSuccess = false;
-
-                                isSuccess = emClass.SendMail(UseMail, EmailAddr, EmailPass, _st.EMAIL, subject, body);
+                                await emClass.SendMail(UseMail, EmailAddr, EmailPass, _st.EMAIL, subject, body);
+                                isSuccess = emClass.isSuccessSendMail;
 
                                 if (isSuccess)
                                     Result = "Email has been sent successfully!";

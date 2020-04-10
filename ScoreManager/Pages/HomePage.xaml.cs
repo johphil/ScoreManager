@@ -189,7 +189,7 @@ namespace ScoreManager.Pages
                             List<Models._Student> lErrorMails = new List<Models._Student>();
                             List<string> lErrorInfo = new List<string>();
 
-                            worker.DoWork += (o, ea) =>
+                            worker.DoWork += async (o, ea) =>
                             {
                                 string subject = String.Format("{0} {1} {2}", Globals.EmailSubject, _e.NAME, _t.TERM);
                                 string scores = "";
@@ -224,8 +224,10 @@ namespace ScoreManager.Pages
                                         , scores
                                         , EmailFoot
                                         );
-                                    
-                                    isSuccess = emClass.SendMail(UseMail, EmailAddr, EmailPass, _studTable[x].EMAIL, subject, body);
+
+                                    await emClass.SendMail(UseMail, EmailAddr, EmailPass, _studTable[x].EMAIL, subject, body);
+
+                                    isSuccess = emClass.isSuccessSendMail;
 
                                     if (!isSuccess)
                                     {

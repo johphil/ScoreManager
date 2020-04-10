@@ -20,8 +20,9 @@ namespace ScoreManager
     class License
     {
         #region FIREBASE
+        public _User _user;
         private IFirebaseClient fbClient;
-        private IFirebaseConfig fbConfig = new FirebaseConfig
+        private readonly IFirebaseConfig fbConfig = new FirebaseConfig
         {
             AuthSecret = Globals.FIREBASE_SECRET,
             BasePath = Globals.FIREBASE_PATH
@@ -37,12 +38,12 @@ namespace ScoreManager
                 return false;
         }
 
-        public _User GetRegistrationFirebase(string License)
+        public async Task GetRegistrationFirebase(string License)
         {
             if (IsFirebaseConnected())
             {
-                FirebaseResponse fbResponse = fbClient.Get("License/" + License);
-                _User _user = null;
+                FirebaseResponse fbResponse = await fbClient.GetTaskAsync("License/" + License);
+                _user = null;
 
                 try
                 {
@@ -50,20 +51,11 @@ namespace ScoreManager
                 }
                 catch
                 { }
-
-                return _user;
+                
             }
-            else
-                return null;
         }
 
-        private void ActivateFirebase(string License, _User _user)
-        {
-            _user.ISACTIVATED = 1;
-            fbClient.SetTaskAsync("License/" + License, _user);
-        }
-
-        public void DeactivateFirebase(string License)
+        public async Task DeactivateFirebase(string License)
         {
             try
             {
@@ -89,7 +81,7 @@ namespace ScoreManager
                                 _user.PASSWORD = reader[3].ToString();
                                 _user.ISACTIVATED = 0;
 
-                                fbClient.SetTaskAsync("License/" + License, _user);
+                                await fbClient.SetTaskAsync("License/" + License, _user);
                             }
                         }
                     }
@@ -103,11 +95,12 @@ namespace ScoreManager
         #endregion
 
         //insert registered user to local database
-        public void Activate(string License, string ProcessorID, _User _user)
+        public async Task Activate(string License, string ProcessorID, _User _user)
         {
             try
             {
-                ActivateFirebase(License, _user);
+                _user.ISACTIVATED = 1;
+                await fbClient.SetTaskAsync("License/" + License, _user);
 
                 using (StreamWriter file = new StreamWriter(Globals.LicenseFile))
                 {

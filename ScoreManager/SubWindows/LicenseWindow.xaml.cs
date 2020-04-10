@@ -35,28 +35,25 @@ namespace ScoreManager.SubWindows
         License lClass = new License();
         Class.Email emClass = new Class.Email();
 
-
-        /*****************************************************************/
-
-
-        private void BtnActivate_Click(object sender, RoutedEventArgs e)
+        private async void ActivateLicense()
         {
-            _User _user = lClass.GetRegistrationFirebase(tbLicense.Text.Trim());
-            
-            if (_user != null && !string.IsNullOrWhiteSpace(tbLicense.Text))
+            await lClass.GetRegistrationFirebase(tbLicense.Text.Trim());
+
+            if (lClass._user != null && !string.IsNullOrWhiteSpace(tbLicense.Text))
             {
-                if (_user.ISACTIVATED == 0)
+                if (lClass._user.ISACTIVATED == 0)
                 {
                     string pid = lClass.GetProcessorID();
-                    lClass.Activate(tbLicense.Text.Trim(), pid, _user);
+                    await lClass.Activate(tbLicense.Text.Trim(), pid, lClass._user);
                     lClass.GetLicenseInfo(lClass.GetLicenseKey(), out string name, out string email);
-                    emClass.SendMail(Globals.USE_EMAIL_GMAIL, Globals.EmailSenderUsername, Globals.EmailSenderPassword, _user.EMAIL, "Score Manager License Activated", Globals.MSG_ACTIVATE);
-                    MessageBox.Show(String.Format("License Key Accepted! \nInfo:\n\n{0} \n{1} \n", _user.NAME, _user.EMAIL), "License Activated Successfully", MessageBoxButton.OK, MessageBoxImage.Information);
+                    await emClass.SendMail(Globals.USE_EMAIL_GMAIL, Globals.EmailSenderUsername, Globals.EmailSenderPassword, lClass._user.EMAIL, "Score Manager License Activated", Globals.MSG_ACTIVATE);
+                    MessageBox.Show(String.Format("License Key Accepted! \nInfo:\n\n{0} \n{1} \n", lClass._user.NAME, lClass._user.EMAIL), "License Activated Successfully", MessageBoxButton.OK, MessageBoxImage.Information);
                     this.Close();
                 }
                 else
                 {
                     MessageBox.Show("This license has already been activated with another device.", "Invalid Licence Key", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    this.IsEnabled = true;
                     tbLicense.SelectAll();
                     tbLicense.Focus();
                 }
@@ -64,16 +61,24 @@ namespace ScoreManager.SubWindows
             else
             {
                 MessageBox.Show("License maybe invalid or Internet connection is lost. Please try again.", "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                
+                this.IsEnabled = true;
                 tbLicense.SelectAll();
                 tbLicense.Focus();
             }
         }
+        /*****************************************************************/
+        
 
         private void BtnRequest_MouseDown(object sender, MouseButtonEventArgs e)
         {
             SubWindows.RegistrationWindow rWin = new SubWindows.RegistrationWindow();
             rWin.ShowDialog();
+        }
+
+        private void BtnActivate_Click(object sender, RoutedEventArgs e)
+        {
+            this.IsEnabled = false;
+            ActivateLicense();
         }
     }
 }

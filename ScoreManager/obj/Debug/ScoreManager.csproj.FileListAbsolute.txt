@@ -71,3 +71,4 @@ C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManager\bin\Debug\Newtonsoft.Json.dll
 C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManager\bin\Debug\RestSharp.dll
 C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManager\bin\Debug\Newtonsoft.Json.xml
 C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManager\bin\Debug\RestSharp.xml
+C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManager\obj\Debug\ScoreManager.csprojAssemblyReference.cache
