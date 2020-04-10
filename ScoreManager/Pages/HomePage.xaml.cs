@@ -197,7 +197,6 @@ namespace ScoreManager.Pages
                                 int offset = 0;
                                 List<string> lStudentEmails = new List<string>();
                                 bool isSuccess = false;
-                                bool hasError = false;
 
                                 for (int x = 0; x < _studTable.Count; x++)
                                 {
@@ -214,7 +213,6 @@ namespace ScoreManager.Pages
                                     {
                                         lErrorMails.Add(_studTable[x]);
                                         lErrorInfo.Add("Score not set.");
-                                        hasError = true;
                                     }
 
                                     offset += _subjTable.Count;
@@ -233,7 +231,6 @@ namespace ScoreManager.Pages
                                     {
                                         lErrorMails.Add(_studTable[x]);
                                         lErrorInfo.Add("Invalid Email.");
-                                        hasError = true;
                                     }
                                     
                                     int percent = (int)(((double)(x + 1) / _studTable.Count) * 1000);

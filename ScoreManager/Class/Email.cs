@@ -162,9 +162,11 @@ namespace ScoreManager.Class
                     EnableSsl = true
                 };
 
-                MailMessage msg = new MailMessage();
-                msg.From = new MailAddress(EmailFromAddr);
-                
+                MailMessage msg = new MailMessage
+                {
+                    From = new MailAddress(EmailFromAddr)
+                };
+
                 foreach (string addr in EmailToAddr)
                 {
                     msg.To.Add(new MailAddress(addr));

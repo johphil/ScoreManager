@@ -11,16 +11,104 @@ using System.Windows;
 using System.Management;
 using System.Collections;
 using System.Configuration;
+using FireSharp.Interfaces;
+using FireSharp.Config;
+using FireSharp.Response;
 
 namespace ScoreManager
 {
     class License
     {
-        //activate ang license key for first time use or lost key and update isactivated = 1
-        public void Activate(string License, string ProcessorID)
+        #region FIREBASE
+        private IFirebaseClient fbClient;
+        private IFirebaseConfig fbConfig = new FirebaseConfig
+        {
+            AuthSecret = Globals.FIREBASE_SECRET,
+            BasePath = Globals.FIREBASE_PATH
+        };
+
+        public bool IsFirebaseConnected()
+        {
+            fbClient = new FireSharp.FirebaseClient(fbConfig);
+
+            if (fbClient != null)
+                return true;
+            else
+                return false;
+        }
+
+        public _User GetRegistrationFirebase(string License)
+        {
+            if (IsFirebaseConnected())
+            {
+                FirebaseResponse fbResponse = fbClient.Get("License/" + License);
+                _User _user = null;
+
+                try
+                {
+                    _user = fbResponse.ResultAs<_User>();
+                }
+                catch
+                { }
+
+                return _user;
+            }
+            else
+                return null;
+        }
+
+        private void ActivateFirebase(string License, _User _user)
+        {
+            _user.ISACTIVATED = 1;
+            fbClient.SetTaskAsync("License/" + License, _user);
+        }
+
+        public void DeactivateFirebase(string License)
         {
             try
             {
+
+                _User _user = new _User();
+
+                using (SQLiteConnection con = new SQLiteConnection(Globals.DbConString))
+                {
+                    string query = "SELECT NAME, EMAIL, USERNAME, PASSWORD FROM tblUsers WHERE LICENSE = @license;";
+                    using (SQLiteCommand cmd = new SQLiteCommand(query, con))
+                    {
+                        cmd.Parameters.Add("@license", DbType.String).Value = License;
+
+                        con.Open();
+
+                        using (SQLiteDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                _user.NAME = reader[0].ToString();
+                                _user.EMAIL = reader[1].ToString();
+                                _user.USERNAME = reader[2].ToString();
+                                _user.PASSWORD = reader[3].ToString();
+                                _user.ISACTIVATED = 0;
+
+                                fbClient.SetTaskAsync("License/" + License, _user);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
+        #endregion
+
+        //insert registered user to local database
+        public void Activate(string License, string ProcessorID, _User _user)
+        {
+            try
+            {
+                ActivateFirebase(License, _user);
+
                 using (StreamWriter file = new StreamWriter(Globals.LicenseFile))
                 {
                     //hash muna
@@ -29,13 +117,15 @@ namespace ScoreManager
 
                 using (SQLiteConnection con = new SQLiteConnection(Globals.DbConString))
                 {
-                    string query = "UPDATE tblUsers " +
-                        "SET ISACTIVATED = 1, " +
-                        "PROCESSOR_ID = @processorid " +
-                        "WHERE LICENSE = @license;";
+                    string query = "INSERT OR REPLACE INTO tblUsers VALUES(@license, @username, @password, @name, @email, @isactivated, @processorid);";
                     using (SQLiteCommand cmd = new SQLiteCommand(query, con))
                     {
                         cmd.Parameters.Add("@license", DbType.String).Value = License;
+                        cmd.Parameters.Add("@username", DbType.String).Value = _user.USERNAME;
+                        cmd.Parameters.Add("@password", DbType.String).Value = _user.PASSWORD;
+                        cmd.Parameters.Add("@name", DbType.String).Value = _user.NAME;
+                        cmd.Parameters.Add("@email", DbType.String).Value = _user.EMAIL;
+                        cmd.Parameters.Add("@isactivated", DbType.Int32).Value = 1;
                         cmd.Parameters.Add("@processorid", DbType.String).Value = ProcessorID;
 
                         con.Open();

@@ -17,7 +17,7 @@ namespace ScoreManager.Class
             {
                 using (SQLiteConnection con = new SQLiteConnection(Globals.DbConString))
                 {
-                    string query = "SELECT ID FROM tblUsers WHERE USERNAME = @username AND PASSWORD = @password AND LICENSE = @license;";
+                    string query = "SELECT COUNT(*) FROM tblUsers WHERE USERNAME = @username AND PASSWORD = @password AND LICENSE = @license;";
                     using (SQLiteCommand cmd = new SQLiteCommand(query, con))
                     {
                         cmd.Parameters.Add("@username", DbType.String).Value = Username;

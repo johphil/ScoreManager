@@ -14,6 +14,7 @@
         /**EMAIL**/
         public static string EmailSenderUsername = "smansender@gmail.com";
         public static string EmailSenderPassword = "mapuaccesc";
+        public static string EmailDev = "johphilencarnacion@gmail.com";
         public static string EmailSubject = "Score verification ";
         public const int USE_EMAIL_GMAIL = 1;
         public const int USE_EMAIL_MAPUA = 2;
@@ -22,5 +23,13 @@
 
         /*DIRECTORIES*/
         public static string PATH_EMAIL_ERRORS = "EmailErrors/";
+
+        /*FIREBASE*/
+        public static string FIREBASE_SECRET = "qpKfDswZG4mb2OlAQxcWOpSmJMHX4Uymd9zpWFhl";
+        public static string FIREBASE_PATH = "https://scoremanager-2e233.firebaseio.com/";
+
+        /*MESSAGE*/
+        public static string MSG_ACTIVATE = "You have successfully activated your license! Enjoy! =)";
+        public static string MSG_DEACTIVATE = "You have successfully deactivated your license! Thank you for using Score Manager!";
     }
 }

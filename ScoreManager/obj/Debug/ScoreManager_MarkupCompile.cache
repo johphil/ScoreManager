@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManager\App.xaml
-11-937117633
+121723449322
 2-1177361418
-31731021034
-27-1450301925
-LoginWindow.xaml;MainWindow.xaml;Pages\ScoresPage.xaml;Pages\HomePage.xaml;Pages\EnrollmentPage.xaml;Pages\SettingsPage.xaml;Pages\VerifyPage.xaml;SubWindows\DeactivateWindow.xaml;SubWindows\ExamManageWindow.xaml;SubWindows\LicenseWindow.xaml;SubWindows\TermWindow.xaml;
+33707787213
+31-995187649
+LoginWindow.xaml;MainWindow.xaml;SubWindows\RegistrationWindow.xaml;Pages\ScoresPage.xaml;Pages\HomePage.xaml;Pages\EnrollmentPage.xaml;Pages\SettingsPage.xaml;Pages\VerifyPage.xaml;SubWindows\DeactivateWindow.xaml;SubWindows\ExamManageWindow.xaml;SubWindows\LicenseWindow.xaml;SubWindows\TermWindow.xaml;
 
 False
 

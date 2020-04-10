@@ -22,6 +22,7 @@ namespace ScoreManager.SubWindows
         License lClass = new License();
         string License = "";
         public bool isDeactivate = false;
+        string Email = "";
         public DeactivateWindow()
         {
             InitializeComponent();
@@ -32,12 +33,15 @@ namespace ScoreManager.SubWindows
 
             txtLicense.Text = name;
             txtEmail.Text = email;
+            Email = email;
 
             tbLicense.Focus();
         }
 
         private void BtnDeactivate_Click(object sender, RoutedEventArgs e)
         {
+            Class.Email emClass = new Class.Email();
+
             if (MessageBox.Show("Do you really want to deactivate this license?\nContact the developer for assistance if needed.", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.Yes) == MessageBoxResult.Yes)
             {
                 if (License != tbLicense.Text.Trim())
@@ -46,10 +50,15 @@ namespace ScoreManager.SubWindows
                 }
                 else if (License == tbLicense.Text.Trim())
                 {
-                    lClass.Deactivate(License);
-                    MessageBox.Show(String.Format("Your License: {0}, has been deactivated. \nYou will be redirected to login screen.", License), "Deactivate Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                    isDeactivate = true;
-                    this.Close();
+                    if (lClass.IsFirebaseConnected())
+                    {
+                        lClass.DeactivateFirebase(License);
+                        lClass.Deactivate(License);
+                        emClass.SendMail(Globals.USE_EMAIL_GMAIL, Globals.EmailSenderUsername, Globals.EmailSenderPassword, Email, "Score Manager License Deactivated", Globals.MSG_DEACTIVATE);
+                        MessageBox.Show(String.Format("Your License: {0}, has been deactivated. \nYou will be redirected to login screen.", License), "Deactivate Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                        isDeactivate = true;
+                        this.Close();
+                    }
                 }
             }
         }

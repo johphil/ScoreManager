@@ -45,8 +45,8 @@ namespace ScoreManager
                 string pid = lClass.GetProcessorID();
                 if (lClass.IsActivated(lClass.GetLicenseKey(), pid))
                 {
-                    int ID = l.SignIn(tbUsername.Text.Trim(), tbPassword.Password);
-                    switch (ID)
+                    int isExist = l.SignIn(tbUsername.Text.Trim(), tbPassword.Password);
+                    switch (isExist)
                     {
                         case 0:
                             {
