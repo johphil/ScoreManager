@@ -55,12 +55,20 @@ namespace ScoreManager.SubWindows
                 {
                     if (lClass.IsFirebaseConnected())
                     {
-                        await lClass.DeactivateFirebase(License);
-                        lClass.Deactivate(License);
                         await emClass.SendMail(Globals.USE_EMAIL_GMAIL, Globals.EmailSenderUsername, Globals.EmailSenderPassword, Email, "Score Manager License Deactivated", Globals.MSG_DEACTIVATE);
-                        MessageBox.Show(String.Format("Your License: {0}, has been deactivated. \nYou will be redirected to login screen.", License), "Deactivate Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                        isDeactivate = true;
-                        this.Close();
+                        if (emClass.isSuccessSendMail)
+                        {
+                            await lClass.DeactivateFirebase(License);
+                            lClass.Deactivate(License);
+
+                            MessageBox.Show(String.Format("Your License: {0}, has been deactivated. \nYou will be redirected to login screen.", License), "Deactivate Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                            isDeactivate = true;
+                            this.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Cannot proceed. Please check Internet connection and try again.", "Try Again", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                        }
                     }
                 }
             }

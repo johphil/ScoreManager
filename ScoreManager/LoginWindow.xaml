@@ -13,5 +13,6 @@
         <PasswordBox x:Name="tbPassword" HorizontalAlignment="Left" Margin="224,79,0,0" VerticalAlignment="Top" Width="136" Height="24" VerticalContentAlignment="Center" PasswordChar="*" TabIndex="1"/>
         <Button x:Name="btnLogin" Style="{StaticResource btnNormal}" Content="L O G I N" HorizontalAlignment="Left" Margin="224,117,0,0" VerticalAlignment="Top" Width="136" Height="24" IsDefault="True" IsTabStop="False" Click="BtnLogin_Click" Background="#FFF8FF66" FontFamily="Century"/>
         <Image HorizontalAlignment="Left" Margin="29,10,0,10" Width="160" Source="img/logo.jpg"/>
+        <TextBlock x:Name="btnForgotUserPass" HorizontalAlignment="Left" Margin="248,146,0,0" TextWrapping="Wrap" Text="Forgot User/Pass" Height="16" VerticalAlignment="Top" TextDecorations="Underline" FontStyle="Italic" Cursor="Hand" MouseDown="BtnForgotUserPass_MouseDown"/>
     </Grid>
 </Window>

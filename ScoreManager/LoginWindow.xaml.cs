@@ -28,6 +28,7 @@ namespace ScoreManager
 
         //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         Class.Login l = new Class.Login();
+        Class.Email emClass = new Class.Email();
         License lClass = new License();
 
         private void InvalidLicense()
@@ -37,6 +38,27 @@ namespace ScoreManager
             lWin.ShowDialog();
         }
 
+        private async void ForgotUserPass()
+        {
+            if (lClass.IsLicenseFileExists())
+            {
+                string License = lClass.GetLicenseKey();
+                lClass.GetLicenseInfo(License, out string Name, out string Email);
+                lClass.GetUsernamePassword(License, out string Username, out string Password);
+                string body = String.Format("Your account details: \n" +
+                    "NAME: {0} \n" +
+                    "USERNAME: {1} \n" +
+                    "PASSWORD: {2} \n\n\n" +
+                    "Please do not reply. This is an automated e-mail. Thank you for using Score Manager!", Name, Username, Password);
+                await emClass.SendMail(1, Globals.EmailSenderUsername, Globals.EmailSenderPassword, Email, "Score Manager Forgot Password", body);
+
+                if (emClass.isSuccessSendMail)
+                    MessageBox.Show("Please check your email.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                else
+                    MessageBox.Show("Please try again.", "Try Again", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
+            this.IsEnabled = true;
+        }
         //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
@@ -84,6 +106,12 @@ namespace ScoreManager
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        private void BtnForgotUserPass_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.IsEnabled = false;
+            ForgotUserPass();
         }
     }
 }

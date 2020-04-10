@@ -183,7 +183,7 @@ namespace ScoreManager.Pages
                                     Result = "Email has failed!";
 
 
-                                MessageBox.Show(Result, "Email Status", MessageBoxButton.OK, MessageBoxImage.Information); 
+                                MessageBox.Show(Result, "Email Status", MessageBoxButton.OK, MessageBoxImage.Information);
                             };
                                 
                             worker.RunWorkerCompleted += (o, ea) =>

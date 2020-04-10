@@ -182,6 +182,9 @@ namespace ScoreManager.Pages
                     if (MessageBox.Show(String.Format("Email will be sent to {0} students. \n\n{1}\n\nDo you want to proceed?", _studTable.Count, confirmationmsg), "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Information, MessageBoxResult.Yes) == MessageBoxResult.Yes)
                     {
                         string Result = "";
+                        mWin.isWorking = true;
+                        progressBar.IsIndeterminate = true;
+
                         if (lScores.Count != 0)
                         {
                             //Declare a new BackgroundWorker
@@ -236,7 +239,7 @@ namespace ScoreManager.Pages
                                     }
                                     
                                     int percent = (int)(((double)(x + 1) / _studTable.Count) * 1000);
-                                    worker.ReportProgress(percent, String.Format("{0} / {1}", x+1, _studTable.Count));
+                                    //worker.ReportProgress(percent, String.Format("{0} / {1}", x+1, _studTable.Count));
                                 }
 
                                 if (lErrorMails.Count > 0)
@@ -259,15 +262,16 @@ namespace ScoreManager.Pages
                                 }
 
                                 MessageBox.Show(Result, "Email Result", MessageBoxButton.OK, MessageBoxImage.Information);
+                                mWin.isWorking = false;
                             };
 
-                            worker.WorkerReportsProgress = true;
+                            /*worker.WorkerReportsProgress = true;
 
                             worker.ProgressChanged += (o, ea) =>
                             {
                                 progressBar.Value = ea.ProgressPercentage;
                                 txtSendStatus.Text = (string)ea.UserState;
-                            };
+                            };*/
 
                             worker.RunWorkerCompleted += (o, ea) =>
                             {

@@ -43,12 +43,20 @@ namespace ScoreManager.SubWindows
             {
                 if (lClass._user.ISACTIVATED == 0)
                 {
-                    string pid = lClass.GetProcessorID();
-                    await lClass.Activate(tbLicense.Text.Trim(), pid, lClass._user);
-                    lClass.GetLicenseInfo(lClass.GetLicenseKey(), out string name, out string email);
                     await emClass.SendMail(Globals.USE_EMAIL_GMAIL, Globals.EmailSenderUsername, Globals.EmailSenderPassword, lClass._user.EMAIL, "Score Manager License Activated", Globals.MSG_ACTIVATE);
-                    MessageBox.Show(String.Format("License Key Accepted! \nInfo:\n\n{0} \n{1} \n", lClass._user.NAME, lClass._user.EMAIL), "License Activated Successfully", MessageBoxButton.OK, MessageBoxImage.Information);
-                    this.Close();
+                    if (emClass.isSuccessSendMail)
+                    {
+                        string pid = lClass.GetProcessorID();
+                        await lClass.Activate(tbLicense.Text.Trim(), pid, lClass._user);
+                        lClass.GetLicenseInfo(lClass.GetLicenseKey(), out string name, out string email);
+
+                        MessageBox.Show(String.Format("License Key Accepted! \nInfo:\n\n{0} \n{1} \n", lClass._user.NAME, lClass._user.EMAIL), "License Activated Successfully", MessageBoxButton.OK, MessageBoxImage.Information);
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Cannot proceed. Please check Internet connection and try again.", "Try Again", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    }
                 }
                 else
                 {

@@ -158,6 +158,41 @@ namespace ScoreManager
             }
         }
 
+        public void GetUsernamePassword(string License, out string Username, out string Password)
+        {
+            try
+            {
+                using (SQLiteConnection con = new SQLiteConnection(Globals.DbConString))
+                {
+                    string query = "SELECT USERNAME, PASSWORD FROM tblUsers WHERE LICENSE = @license;";
+                    using (SQLiteCommand cmd = new SQLiteCommand(query, con))
+                    {
+                        cmd.Parameters.Add("@license", DbType.String).Value = License;
+
+                        con.Open();
+                        using (SQLiteDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                Username = reader[0].ToString();
+                                Password = reader[1].ToString();
+                            }
+                            else
+                            {
+                                Username = Globals.ERROR.ToString();
+                                Password = Globals.ERROR.ToString();
+                            }
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                Username = Globals.ERROR.ToString();
+                Password = Globals.ERROR.ToString();
+            }
+        }
+
         //kunin ang name at email ng licensed user
         public void GetLicenseInfo(string License, out string Name, out string Email)
         {

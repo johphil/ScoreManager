@@ -26,12 +26,23 @@ namespace ScoreManager
         }
 
         public bool isLogout = false;
-
+        public bool isWorking = false;
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (!isLogout)
-                Application.Current.Shutdown();
+            if (isWorking)
+            {
+                MessageBox.Show("Emails are being sent in the background process. Please wait for it to finish.", "Please Wait", MessageBoxButton.OK, MessageBoxImage.Information);
+                e.Cancel = true;
+                isLogout = false;
+            }
+            else
+            {
+                if (!isLogout && !isWorking)
+                    Application.Current.Shutdown();
+                else if (isLogout && !isWorking)
+                    Logout();
+            }
         }
 
         private void MenuEditExams_Click(object sender, RoutedEventArgs e)
@@ -54,7 +65,6 @@ namespace ScoreManager
         private void MenuLogout_Click(object sender, RoutedEventArgs e)
         {
             isLogout = true;
-            Logout();
         }
 
         private void MenuExit_Click(object sender, RoutedEventArgs e)
@@ -110,7 +120,7 @@ namespace ScoreManager
         private void BtnLogout_Click(object sender, RoutedEventArgs e)
         {
             isLogout = true;
-            Logout();
+            this.Close();
         }
 
         private void MenuDeactivate_Click(object sender, RoutedEventArgs e)
@@ -126,7 +136,6 @@ namespace ScoreManager
 
         public void Logout()
         {
-            this.Close();
             LoginWindow lWin = new LoginWindow();
             lWin.Show();
         }
