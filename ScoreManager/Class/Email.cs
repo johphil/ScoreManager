@@ -14,7 +14,7 @@ namespace ScoreManager.Class
 {
     class Email
     {
-        public bool isSuccessSendMail { get; set; }
+        public bool IsSuccessSendMail { get; set; }
 
         public void LoadEmailSettings(out int UseMail, out string EmailAddress1, out string EmailPassword1, out string EmailAddress2, out string EmailPassword2, out string EmailFooter)
         {
@@ -128,11 +128,11 @@ namespace ScoreManager.Class
                     await client.SendMailAsync(EmailFromAddr, EmailToAddr, Subject, Body);
                 }
 
-                isSuccessSendMail = true;
+                IsSuccessSendMail = true;
             }
             catch
             {
-                isSuccessSendMail = false;
+                IsSuccessSendMail = false;
             }
         }
 

@@ -23,6 +23,7 @@
 
         /*DIRECTORIES*/
         public static string PATH_EMAIL_ERRORS = "EmailErrors/";
+        public static string PATH_USER_MANUAL = "userman.pdf";
 
         /*FIREBASE*/
         public static string FIREBASE_SECRET = "qpKfDswZG4mb2OlAQxcWOpSmJMHX4Uymd9zpWFhl";

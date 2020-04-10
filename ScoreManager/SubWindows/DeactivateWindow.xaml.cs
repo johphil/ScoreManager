@@ -56,7 +56,7 @@ namespace ScoreManager.SubWindows
                     if (lClass.IsFirebaseConnected())
                     {
                         await emClass.SendMail(Globals.USE_EMAIL_GMAIL, Globals.EmailSenderUsername, Globals.EmailSenderPassword, Email, "Score Manager License Deactivated", Globals.MSG_DEACTIVATE);
-                        if (emClass.isSuccessSendMail)
+                        if (emClass.IsSuccessSendMail)
                         {
                             await lClass.DeactivateFirebase(License);
                             lClass.Deactivate(License);

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -112,6 +113,22 @@ namespace ScoreManager.Pages
 
             emClass.SaveEmailSettings(useMail, tbEmailAddress1.Text, tbPassword1.Password, tbEmailAddress2.Text, tbPassword2.Password, footer);
             MessageBox.Show("Saved Successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void BtnFeedbacks_Click(object sender, RoutedEventArgs e)
+        {
+            SubWindows.FeedbackWindow fWin = new SubWindows.FeedbackWindow();
+            fWin.ShowDialog();
+        }
+
+        private void BtnManual_Click(object sender, RoutedEventArgs e)
+        {
+            if (File.Exists(Globals.PATH_USER_MANUAL))
+            {
+                System.Diagnostics.Process.Start(Globals.PATH_USER_MANUAL);
+            }
+            else
+                MessageBox.Show("Could not find user manual. Please reinstall the application.", "File Not Found", MessageBoxButton.OK, MessageBoxImage.Exclamation);
         }
     }
 }

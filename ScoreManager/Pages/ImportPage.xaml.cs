@@ -323,7 +323,7 @@ namespace ScoreManager.Pages
             {
                 Models._Student _s = (Models._Student)dgStudents.SelectedItem;
                 lDeleteStudents.Add(new _DeleteStudents { EXAM_ID = ExamID, TERM_ID = TermID, STUDENT_ID = _s.ID });
-                _studTable.RemoveAt(dgStudents.SelectedIndex);
+                _studTable.Remove(_s);
             }
         }
 

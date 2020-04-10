@@ -179,11 +179,11 @@ namespace ScoreManager.Pages
                     {
                         confirmationmsg += String.Format("{0} {1}\n", _studTable[i].ID, _studTable[i].NAME);
                     }
-                    if (MessageBox.Show(String.Format("Email will be sent to {0} students. \n\n{1}\n\nDo you want to proceed?", _studTable.Count, confirmationmsg), "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Information, MessageBoxResult.Yes) == MessageBoxResult.Yes)
+                    if (MessageBox.Show(String.Format("Email will be sent to {0} students. \n\n{1}\n\nYou can continue to work. Just don't close the application while the emails are sending. Do you want to proceed?", _studTable.Count, confirmationmsg), "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Information, MessageBoxResult.Yes) == MessageBoxResult.Yes)
                     {
                         string Result = "";
                         mWin.isWorking = true;
-                        progressBar.IsIndeterminate = true;
+                        //progressBar.IsIndeterminate = true;
 
                         if (lScores.Count != 0)
                         {
@@ -230,7 +230,7 @@ namespace ScoreManager.Pages
 
                                     await emClass.SendMail(UseMail, EmailAddr, EmailPass, _studTable[x].EMAIL, subject, body);
 
-                                    isSuccess = emClass.isSuccessSendMail;
+                                    isSuccess = emClass.IsSuccessSendMail;
 
                                     if (!isSuccess)
                                     {
@@ -275,16 +275,14 @@ namespace ScoreManager.Pages
 
                             worker.RunWorkerCompleted += (o, ea) =>
                             {
-                                txtSendStatus.Text = "";
-                                progressBar.Value = 0;
-                                this.IsEnabled = true;
+                                //txtSendStatus.Text = "";
+                                //progressBar.Value = 0;
+                                //this.IsEnabled = true;
                             };
 
-                            txtSendStatus.Text = "Sending...";
-                            this.IsEnabled = false;
+                            //txtSendStatus.Text = "Sending...";
+                            //this.IsEnabled = false;
                             worker.RunWorkerAsync();
-
-                            Result = "Email has been sent successfully!";
                         }
                         else
                             MessageBox.Show("Scores for this exam are not yet set. Kindly go to Scores Page and update this student's scores and try again.", "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);

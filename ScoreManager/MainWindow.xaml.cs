@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -65,6 +66,7 @@ namespace ScoreManager
         private void MenuLogout_Click(object sender, RoutedEventArgs e)
         {
             isLogout = true;
+            this.Close();
         }
 
         private void MenuExit_Click(object sender, RoutedEventArgs e)
@@ -138,6 +140,20 @@ namespace ScoreManager
         {
             LoginWindow lWin = new LoginWindow();
             lWin.Show();
+        }
+
+        private void MenuFeedback_Click(object sender, RoutedEventArgs e)
+        {
+            SubWindows.FeedbackWindow fWin = new SubWindows.FeedbackWindow();
+            fWin.ShowDialog();
+        }
+
+        private void MenuUserGuide_Click(object sender, RoutedEventArgs e)
+        {
+            if (File.Exists(Globals.PATH_USER_MANUAL))
+                System.Diagnostics.Process.Start(Globals.PATH_USER_MANUAL);
+            else
+                MessageBox.Show("Could not find user manual. Please reinstall the application.", "File Not Found", MessageBoxButton.OK, MessageBoxImage.Exclamation);
         }
     }
 }

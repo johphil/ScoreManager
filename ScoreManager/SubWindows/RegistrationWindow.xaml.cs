@@ -41,7 +41,7 @@ namespace ScoreManager.SubWindows
             {
                 string body = String.Format("User's Info: \nNAME: {0}\nEMAIL: {1}\n\nLogin Info: \nUSERNAME: {2} \nPASSWORD: {3}", tbName.Text.Trim(), tbEmail.Text.Trim(), tbUsername.Text.Trim(), tbPassword.Password);
                 await emClass.SendMail(Globals.USE_EMAIL_GMAIL, Globals.EmailSenderUsername, Globals.EmailSenderPassword, Globals.EmailDev, "Score Manager Registration", body);
-                if (emClass.isSuccessSendMail)
+                if (emClass.IsSuccessSendMail)
                 {
                     MessageBox.Show("Registration Success! \nPlease wait for the developers to notice your request. Thank you.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                     this.Close();

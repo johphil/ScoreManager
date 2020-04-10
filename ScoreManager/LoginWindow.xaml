@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Login" Height="208.667" Width="400" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Closing="Window_Closing">
     <Grid Background="Red">
-        <TextBlock HorizontalAlignment="Left" Margin="224,18,0,0" TextWrapping="Wrap" Text="Login" VerticalAlignment="Top" Width="74" Foreground="White"/>
+        <TextBlock HorizontalAlignment="Left" Margin="224,18,0,0" TextWrapping="Wrap" Text="Username" VerticalAlignment="Top" Width="74" Foreground="White"/>
         <TextBlock HorizontalAlignment="Left" Margin="224,63,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Foreground="White"/>
         <TextBox x:Name="tbUsername" HorizontalAlignment="Left" Height="24" Margin="224,34,0,0" VerticalAlignment="Top" Width="136" VerticalContentAlignment="Center" TabIndex="0" MaxLength="20"/>
         <PasswordBox x:Name="tbPassword" HorizontalAlignment="Left" Margin="224,79,0,0" VerticalAlignment="Top" Width="136" Height="24" VerticalContentAlignment="Center" PasswordChar="*" TabIndex="1"/>

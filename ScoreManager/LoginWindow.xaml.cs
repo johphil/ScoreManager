@@ -50,9 +50,9 @@ namespace ScoreManager
                     "USERNAME: {1} \n" +
                     "PASSWORD: {2} \n\n\n" +
                     "Please do not reply. This is an automated e-mail. Thank you for using Score Manager!", Name, Username, Password);
-                await emClass.SendMail(1, Globals.EmailSenderUsername, Globals.EmailSenderPassword, Email, "Score Manager Forgot Password", body);
+                await emClass.SendMail(Globals.USE_EMAIL_GMAIL, Globals.EmailSenderUsername, Globals.EmailSenderPassword, Email, "Score Manager Forgot Password", body);
 
-                if (emClass.isSuccessSendMail)
+                if (emClass.IsSuccessSendMail)
                     MessageBox.Show("Please check your email.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                 else
                     MessageBox.Show("Please try again.", "Try Again", MessageBoxButton.OK, MessageBoxImage.Exclamation);

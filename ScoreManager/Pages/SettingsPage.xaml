@@ -9,7 +9,7 @@
       d:DesignHeight="612" d:DesignWidth="1024"
       Title="SettingsPage">
     <Grid Background="White">
-        <Rectangle Fill="#FFDEDEDE" Margin="612,95,25,10" Stroke="Black"/>
+        <Rectangle Fill="#FFDEDEDE" Margin="612,95,10,10" Stroke="Black"/>
         <DockPanel LastChildFill="False" VerticalAlignment="Top" Height="65" Margin="10,10,10,0">
             <Image DockPanel.Dock="Left" Height="50" VerticalAlignment="Center" Width="50" Source="/ScoreManager;component/img/btn-settings.png"/>
             <TextBlock Text="SETTINGS AND PREFERENCES" DockPanel.Dock="Left" VerticalAlignment="Center" Margin="10" Style="{StaticResource txtHeader1}"/>
@@ -26,7 +26,13 @@
                         <TextBlock Text="TERM CONFIG" VerticalAlignment="Center" TextAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" />
                     </StackPanel>
                 </Button>
-                <Button x:Name="btnManual" Width="70" BorderBrush="{x:Null}" Background="{x:Null}" Cursor="Hand">
+                <Button x:Name="btnFeedbacks" Width="70" BorderBrush="{x:Null}" Background="{x:Null}" Cursor="Hand" Click="BtnFeedbacks_Click">
+                    <StackPanel Orientation="Vertical">
+                        <Image Source="/ScoreManager;component/img/btn-feedback.png" Height="40"/>
+                        <TextBlock Text="FEEDBACK" VerticalAlignment="Center" TextAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" />
+                    </StackPanel>
+                </Button>
+                <Button x:Name="btnManual" Width="70" BorderBrush="{x:Null}" Background="{x:Null}" Cursor="Hand" Click="BtnManual_Click">
                     <StackPanel Orientation="Vertical">
                         <Image Source="/ScoreManager;component/img/btn-guide.png" Height="40"/>
                         <TextBlock Text="USER GUIDE" VerticalAlignment="Center" TextAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" />
@@ -40,23 +46,23 @@
                 </Button>
             </StackPanel>
         </DockPanel>
-        <TextBlock HorizontalAlignment="Left" Margin="633,110,0,0" TextWrapping="Wrap" Text="A MICROSOFT .NET TECHNOLOGY 1 PROJECT" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
-        <TextBlock HorizontalAlignment="Left" Margin="634,323,0,0" TextWrapping="Wrap" Text="APP NAME  : " VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="634,343,0,0" TextWrapping="Wrap" Text="APP VERSION  : " VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="634,365,0,0" TextWrapping="Wrap" Text="LICENSED TO  : " VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="634,385,0,0" TextWrapping="Wrap" Text="EMAIL  : " VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="634,572,0,24" TextWrapping="Wrap" Text="All rights reserved." FontStyle="Italic"/>
-        <Image HorizontalAlignment="Left" Height="123" Margin="864,455,0,0" VerticalAlignment="Top" Width="111" Source="/ScoreManager;component/img/logo-mapua.png"/>
-        <TextBlock x:Name="txtAppName" HorizontalAlignment="Left" Margin="732,323,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="&lt;&gt;"/>
-        <TextBlock x:Name="txtAppVersion" HorizontalAlignment="Left" Margin="732,343,0,0" TextWrapping="Wrap" Text="&lt;&gt;" VerticalAlignment="Top"/>
-        <TextBlock x:Name="txtLicense" HorizontalAlignment="Left" Margin="732,365,0,0" TextWrapping="Wrap" Text="&lt;&gt;" VerticalAlignment="Top"/>
-        <TextBlock x:Name="txtEmail" HorizontalAlignment="Left" Margin="732,385,0,0" TextWrapping="Wrap" Text="&lt;&gt;" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="633,175,0,0" TextWrapping="Wrap" Text="Developers:  GROUP 4" VerticalAlignment="Top" FontStyle="Italic"/>
-        <TextBlock HorizontalAlignment="Left" Margin="633,153,0,0" TextWrapping="Wrap" Text="Instructor:    Engr. Analyn Yumang" VerticalAlignment="Top" FontStyle="Italic"/>
-        <TextBlock HorizontalAlignment="Left" Margin="698,197,0,0" TextWrapping="Wrap" Text="Encarnacion, John Philip, CPE 4" VerticalAlignment="Top" FontStyle="Italic" Width="277"/>
-        <TextBlock Margin="698,217,49,0" TextWrapping="Wrap" Text="Rodriguez, Robert Charles, CPE 4" VerticalAlignment="Top" FontStyle="Italic"/>
-        <TextBlock HorizontalAlignment="Left" Margin="698,239,0,0" TextWrapping="Wrap" Text="Laab, Charles Daniel, CPE 4" VerticalAlignment="Top" FontStyle="Italic" Width="277"/>
-        <Separator HorizontalAlignment="Left" Height="44" Margin="633,260,0,0" VerticalAlignment="Top" Width="342"/>
+        <TextBlock Margin="638,110,36,0" TextWrapping="Wrap" Text="A MICROSOFT .NET TECHNOLOGY 1 PROJECT" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
+        <TextBlock Margin="643,323,297,0" TextWrapping="Wrap" Text="APP NAME  : " VerticalAlignment="Top"/>
+        <TextBlock Margin="643,343,279,0" TextWrapping="Wrap" Text="APP VERSION  : " VerticalAlignment="Top"/>
+        <TextBlock Margin="643,365,281,0" TextWrapping="Wrap" Text="LICENSED TO  : " VerticalAlignment="Top"/>
+        <TextBlock Margin="643,385,326,0" TextWrapping="Wrap" Text="EMAIL  : " VerticalAlignment="Top"/>
+        <TextBlock Margin="634,572,295,24" TextWrapping="Wrap" Text="All rights reserved." FontStyle="Italic"/>
+        <Image Height="123" Margin="864,455,49,0" VerticalAlignment="Top" Source="/ScoreManager;component/img/logo-mapua.png"/>
+        <TextBlock x:Name="txtAppName" Margin="750,323,40,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="&lt;&gt;"/>
+        <TextBlock x:Name="txtAppVersion" Margin="750,343,40,0" TextWrapping="Wrap" Text="&lt;&gt;" VerticalAlignment="Top"/>
+        <TextBlock x:Name="txtLicense" Margin="750,365,40,0" TextWrapping="Wrap" Text="&lt;&gt;" VerticalAlignment="Top"/>
+        <TextBlock x:Name="txtEmail" Margin="750,385,40,0" TextWrapping="Wrap" Text="&lt;&gt;" VerticalAlignment="Top"/>
+        <TextBlock Margin="638,175,36,0" TextWrapping="Wrap" Text="Developers:  GROUP 4" VerticalAlignment="Top" FontStyle="Italic"/>
+        <TextBlock Margin="638,154,36,0" TextWrapping="Wrap" Text="Instructor:    Engr. Analyn Yumang" VerticalAlignment="Top" FontStyle="Italic"/>
+        <TextBlock Margin="708,200,39,0" TextWrapping="Wrap" Text="Encarnacion, John Philip, CPE 4" VerticalAlignment="Top" FontStyle="Italic"/>
+        <TextBlock Margin="708,242,39,0" TextWrapping="Wrap" Text="Rodriguez, Robert Charles, CPE 4" VerticalAlignment="Top" FontStyle="Italic"/>
+        <TextBlock Margin="708,221,39,0" TextWrapping="Wrap" Text="Laab, Charles Daniel, CPE 4" VerticalAlignment="Top" FontStyle="Italic"/>
+        <Separator Height="44" Margin="638,260,36,0" VerticalAlignment="Top"/>
         <Grid Margin="10,95,417,10" Background="Gainsboro">
             <TextBlock HorizontalAlignment="Left" Style="{StaticResource ResourceKey=txtHeader3}" Margin="10,10,0,0" TextWrapping="Wrap" Text="EMAIL SETTINGS" VerticalAlignment="Top"/>
             <xctk:WatermarkTextBox x:Name="tbEmailAddress1" Watermark="@gmail.com" Height="27" Margin="154,100,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>

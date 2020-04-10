@@ -175,7 +175,7 @@ namespace ScoreManager.Pages
                                 
                                 bool isSuccess = false;
                                 await emClass.SendMail(UseMail, EmailAddr, EmailPass, _st.EMAIL, subject, body);
-                                isSuccess = emClass.isSuccessSendMail;
+                                isSuccess = emClass.IsSuccessSendMail;
 
                                 if (isSuccess)
                                     Result = "Email has been sent successfully!";

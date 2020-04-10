@@ -44,7 +44,7 @@ namespace ScoreManager.SubWindows
                 if (lClass._user.ISACTIVATED == 0)
                 {
                     await emClass.SendMail(Globals.USE_EMAIL_GMAIL, Globals.EmailSenderUsername, Globals.EmailSenderPassword, lClass._user.EMAIL, "Score Manager License Activated", Globals.MSG_ACTIVATE);
-                    if (emClass.isSuccessSendMail)
+                    if (emClass.IsSuccessSendMail)
                     {
                         string pid = lClass.GetProcessorID();
                         await lClass.Activate(tbLicense.Text.Trim(), pid, lClass._user);

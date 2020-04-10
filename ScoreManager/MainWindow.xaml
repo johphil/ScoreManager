@@ -20,8 +20,9 @@
                     <MenuItem x:Name="menuSettings" Header="Preferences" Height="25" Click="MenuSettings_Click"/>
                 </MenuItem>
                 <MenuItem Header="Help" Height="25">
-                    <MenuItem x:Name="menuUserGuide" Header="User Guide" Height="25"/>
+                    <MenuItem x:Name="menuUserGuide" Header="User Guide" Height="25" Click="MenuUserGuide_Click"/>
                     <MenuItem x:Name="menuDeactivate" Header="Deactivate" Height="25" Click="MenuDeactivate_Click"/>
+                    <MenuItem x:Name="menuFeedback" Header="Feedbacks" Height="25" Click="MenuFeedback_Click" />
                     <MenuItem x:Name="menuAbout" Header="About" Height="25" Click="MenuAbout_Click"/>
                 </MenuItem>
             </Menu>
@@ -35,7 +36,7 @@
                 <Button x:Name="btnSettings" BorderBrush="{x:Null}" Background="{x:Null}" Cursor="Hand" Click="BtnSettings_Click" Margin="863,10,85,11">
                     <StackPanel Orientation="Vertical">
                         <Image Source="img/btn-settings.png" Height="40"/>
-                        <TextBlock Text="SETTINGS" VerticalAlignment="Center" TextAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" />
+                        <TextBlock Text="PREFERENCES" VerticalAlignment="Center" TextAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" />
                     </StackPanel>
                 </Button>
                 <Button x:Name="btnVerification" BorderBrush="{x:Null}" Background="{x:Null}" Cursor="Hand" Click="BtnVerification_Click" Margin="788,10,160,11">
