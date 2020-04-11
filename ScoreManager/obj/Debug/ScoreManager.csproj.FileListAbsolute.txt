@@ -74,3 +74,4 @@ C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManager\obj\Debug\ScoreManager.csproj.Co
 C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManager\obj\Debug\ScoreManager.exe
 C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManager\obj\Debug\ScoreManager.pdb
 C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManager\bin\Debug\userman.pdf
+C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManager\obj\Debug\ScoreManager.csprojAssemblyReference.cache

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScoreManager", "ScoreManage
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{F812CE6A-732C-46BC-8708-79BC49A75FCC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScoreManagerAdmin", "ScoreManagerAdmin\ScoreManagerAdmin.csproj", "{B2F67AA0-4A24-43E3-A720-D5FCA9530F50}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{19978D7A-EE0B-4327-A829-9A36EBA10DDB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F812CE6A-732C-46BC-8708-79BC49A75FCC}.Debug|Any CPU.ActiveCfg = Debug
 		{F812CE6A-732C-46BC-8708-79BC49A75FCC}.Release|Any CPU.ActiveCfg = Release
+		{B2F67AA0-4A24-43E3-A720-D5FCA9530F50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2F67AA0-4A24-43E3-A720-D5FCA9530F50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2F67AA0-4A24-43E3-A720-D5FCA9530F50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2F67AA0-4A24-43E3-A720-D5FCA9530F50}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -28,6 +28,7 @@
         /*FIREBASE*/
         public static string FIREBASE_SECRET = "qpKfDswZG4mb2OlAQxcWOpSmJMHX4Uymd9zpWFhl";
         public static string FIREBASE_PATH = "https://scoremanager-2e233.firebaseio.com/";
+        public static string PATH_LICENSE = "License/";
 
         /*MESSAGE*/
         public static string MSG_ACTIVATE = "You have successfully activated your license! Enjoy! =)";

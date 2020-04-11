@@ -42,7 +42,7 @@ namespace ScoreManager
         {
             if (IsFirebaseConnected())
             {
-                FirebaseResponse fbResponse = await fbClient.GetTaskAsync("License/" + License);
+                FirebaseResponse fbResponse = await fbClient.GetTaskAsync(Globals.PATH_LICENSE + License);
                 _user = null;
 
                 try
@@ -81,7 +81,7 @@ namespace ScoreManager
                                 _user.PASSWORD = reader[3].ToString();
                                 _user.ISACTIVATED = 0;
 
-                                await fbClient.SetTaskAsync("License/" + License, _user);
+                                await fbClient.SetTaskAsync(Globals.PATH_LICENSE + License, _user);
                             }
                         }
                     }

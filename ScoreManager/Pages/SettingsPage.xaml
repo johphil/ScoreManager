@@ -47,12 +47,12 @@
             </StackPanel>
         </DockPanel>
         <TextBlock Margin="638,110,36,0" TextWrapping="Wrap" Text="A MICROSOFT .NET TECHNOLOGY 1 PROJECT" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
-        <TextBlock Margin="643,323,297,0" TextWrapping="Wrap" Text="APP NAME  : " VerticalAlignment="Top"/>
+        <TextBlock Margin="643,323,279,0" TextWrapping="Wrap" Text="APP NAME  : " VerticalAlignment="Top"/>
         <TextBlock Margin="643,343,279,0" TextWrapping="Wrap" Text="APP VERSION  : " VerticalAlignment="Top"/>
-        <TextBlock Margin="643,365,281,0" TextWrapping="Wrap" Text="LICENSED TO  : " VerticalAlignment="Top"/>
-        <TextBlock Margin="643,385,326,0" TextWrapping="Wrap" Text="EMAIL  : " VerticalAlignment="Top"/>
-        <TextBlock Margin="634,572,295,24" TextWrapping="Wrap" Text="All rights reserved." FontStyle="Italic"/>
-        <Image Height="123" Margin="864,455,49,0" VerticalAlignment="Top" Source="/ScoreManager;component/img/logo-mapua.png"/>
+        <TextBlock Margin="643,365,279,0" TextWrapping="Wrap" Text="LICENSED TO  : " VerticalAlignment="Top"/>
+        <TextBlock Margin="643,385,279,0" TextWrapping="Wrap" Text="EMAIL  : " VerticalAlignment="Top"/>
+        <TextBlock Margin="634,572,165,24" TextWrapping="Wrap" Text="All rights reserved." FontStyle="Italic"/>
+        <Image Height="123" Margin="864,465,49,0" VerticalAlignment="Top" Source="/ScoreManager;component/img/logo-mapua.png"/>
         <TextBlock x:Name="txtAppName" Margin="750,323,40,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="&lt;&gt;"/>
         <TextBlock x:Name="txtAppVersion" Margin="750,343,40,0" TextWrapping="Wrap" Text="&lt;&gt;" VerticalAlignment="Top"/>
         <TextBlock x:Name="txtLicense" Margin="750,365,40,0" TextWrapping="Wrap" Text="&lt;&gt;" VerticalAlignment="Top"/>
