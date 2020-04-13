@@ -74,6 +74,5 @@ C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManager\obj\Release\ScoreManager.csproj.
 C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManager\obj\Release\ScoreManager.csproj.CopyComplete
 C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManager\obj\Release\ScoreManager.exe
 C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManager\obj\Release\ScoreManager.pdb
-C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManager\obj\Release\ScoreManager.csprojAssemblyReference.cache
 C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManager\obj\Release\SubWindows\BackupWindow.g.cs
 C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManager\obj\Release\SubWindows\BackupWindow.baml
