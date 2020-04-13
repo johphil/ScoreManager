@@ -117,12 +117,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_A21FE46A779D41C8A3D6A879CB153652"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_A82BB8B1D8FB6A93E48B86D02B0DB76A"
         "OwnerKey" = "8:_93B10CC0DF8B6563811D6E161CBCE51F"
         "MsmSig" = "8:_UNDEFINED"
@@ -136,6 +130,12 @@
         "Entry"
         {
         "MsmKey" = "8:_A875C56721F24BD7A6FD6B193355AE71"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_AF1B7B5E41D24C43A4916D2341C233FC"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -759,26 +759,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A21FE46A779D41C8A3D6A879CB153652"
-            {
-            "SourcePath" = "8:..\\ScoreManager\\bin\\Debug\\SQLite.Interop.dll"
-            "TargetName" = "8:SQLite.Interop.dll"
-            "Tag" = "8:"
-            "Folder" = "8:_9B7B26EA331747D686593D3338E07543"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_A82BB8B1D8FB6A93E48B86D02B0DB76A"
             {
             "AssemblyRegister" = "3:1"
@@ -814,6 +794,26 @@
             {
             "SourcePath" = "8:..\\ScoreManager\\dbScoreManager.db"
             "TargetName" = "8:dbScoreManager.db"
+            "Tag" = "8:"
+            "Folder" = "8:_9B7B26EA331747D686593D3338E07543"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_AF1B7B5E41D24C43A4916D2341C233FC"
+            {
+            "SourcePath" = "8:..\\ScoreManager\\SQLite.Interop.dll"
+            "TargetName" = "8:SQLite.Interop.dll"
             "Tag" = "8:"
             "Folder" = "8:_9B7B26EA331747D686593D3338E07543"
             "Condition" = "8:"
@@ -992,13 +992,13 @@
             "Property" = "8:TARGETDIR"
                 "Folders"
                 {
-                    "{9EF0B969-E518-4E46-987F-47570745A589}:_3CDF598BBF3B4B9A9E383EA02A711536"
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_1D5C9B5BC51B4AEE9338EC7DCF57BB64"
                     {
                     "Name" = "8:Data"
                     "AlwaysCreate" = "11:FALSE"
                     "Condition" = "8:"
                     "Transitive" = "11:FALSE"
-                    "Property" = "8:_4E88DFD25F864B6C885417BF62D442C3"
+                    "Property" = "8:_13ECF9E5C8FE4DA5AF136390A5BE43F6"
                         "Folders"
                         {
                         }
@@ -1033,7 +1033,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Score Manager"
         "ProductCode" = "8:{50EB58C6-2FC1-4F0A-B2FB-DD14055E4917}"
-        "PackageCode" = "8:{B3599C32-C75A-4399-B3CF-CF231ADDA2D6}"
+        "PackageCode" = "8:{624BC9D6-D2ED-4D35-A1C0-D30A24389283}"
         "UpgradeCode" = "8:{5331045D-1328-47E6-8131-9457531348FF}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -1582,7 +1582,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_57576010ABD94F4CA62905F0D2EAFA21"
             {
-            "SourcePath" = "8:"
+            "SourcePath" = "8:..\\ScoreManager\\obj\\Release\\ScoreManager.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_9B7B26EA331747D686593D3338E07543"

@@ -37,6 +37,9 @@ namespace ScoreManager.Class
         {
             try
             {
+                if (!Directory.Exists(Globals.PATH_DATA))
+                    Directory.CreateDirectory(Globals.PATH_DATA);
+
                 string[] files = Directory.GetFiles(Globals.PATH_DATA);
                 List<string> filenames = new List<string>();
 
