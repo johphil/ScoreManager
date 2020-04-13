@@ -1,5 +1,6 @@
 # ScoreManager
-A MICROSOFT .NET 1 Project 
+
+## COE181P PROJECT
 
 | Version       | Download Link |
 | ------------- |:-------------:|
