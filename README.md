@@ -1,6 +1,6 @@
 # Score Manager
 
-## COE181P PROJECT
+## A COE181P PROJECT
 
 | Version       | Download Link |
 | ------------- |:-------------:|
