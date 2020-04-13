@@ -1,4 +1,4 @@
-# ScoreManager
+# Score Manager
 
 ## COE181P PROJECT
 
