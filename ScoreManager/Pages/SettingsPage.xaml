@@ -44,6 +44,12 @@
                         <TextBlock Text="DEACTIVATE" VerticalAlignment="Center" TextAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" />
                     </StackPanel>
                 </Button>
+                <Button x:Name="btnBackup" Width="70" BorderBrush="{x:Null}" Background="{x:Null}" Cursor="Hand" Click="BtnBackup_Click">
+                    <StackPanel Orientation="Vertical">
+                        <Image Source="/ScoreManager;component/img/btn-backup.png" Height="40"/>
+                        <TextBlock Text="BACKUP DATA" VerticalAlignment="Center" TextAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" />
+                    </StackPanel>
+                </Button>
             </StackPanel>
         </DockPanel>
         <TextBlock Margin="638,110,36,0" TextWrapping="Wrap" Text="A MICROSOFT .NET TECHNOLOGY 1 PROJECT" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>

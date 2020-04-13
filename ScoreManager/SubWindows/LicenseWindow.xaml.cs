@@ -48,7 +48,7 @@ namespace ScoreManager.SubWindows
                     {
                         string pid = lClass.GetProcessorID();
                         await lClass.Activate(tbLicense.Text.Trim(), pid, lClass._user);
-                        lClass.GetLicenseInfo(lClass.GetLicenseKey(), out string name, out string email);
+                        lClass.GetLicenseNameEmail(lClass.GetLicenseKey(), out string name, out string email);
 
                         MessageBox.Show(String.Format("License Key Accepted! \nInfo:\n\n{0} \n{1} \n", lClass._user.NAME, lClass._user.EMAIL), "License Activated Successfully", MessageBoxButton.OK, MessageBoxImage.Information);
                         this.Close();

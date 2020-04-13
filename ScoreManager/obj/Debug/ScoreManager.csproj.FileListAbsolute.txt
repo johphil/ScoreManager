@@ -1,4 +1,5 @@
 C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManager\bin\Debug\dbScoreManager.db
+C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManager\bin\Debug\userman.pdf
 C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManager\bin\Debug\msvcr100.dll
 C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManager\bin\Debug\SQLite.Interop.dll
 C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManager\bin\Debug\ScoreManager.exe.config
@@ -37,6 +38,7 @@ C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManager\bin\Debug\zh-Hans\Xceed.Wpf.Aval
 C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManager\obj\Debug\ScoreManager.csproj.ResolveComReference.cache
 C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManager\obj\Debug\LoginWindow.g.cs
 C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManager\obj\Debug\MainWindow.g.cs
+C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManager\obj\Debug\SubWindows\BackupWindow.g.cs
 C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManager\obj\Debug\SubWindows\FeedbackWindow.g.cs
 C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManager\obj\Debug\SubWindows\RegistrationWindow.g.cs
 C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManager\obj\Debug\Pages\ScoresPage.g.cs
@@ -55,6 +57,7 @@ C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManager\obj\Debug\ScoreManager_MarkupCom
 C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManager\obj\Debug\App.baml
 C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManager\obj\Debug\LoginWindow.baml
 C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManager\obj\Debug\MainWindow.baml
+C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManager\obj\Debug\SubWindows\BackupWindow.baml
 C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManager\obj\Debug\SubWindows\FeedbackWindow.baml
 C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManager\obj\Debug\SubWindows\RegistrationWindow.baml
 C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManager\obj\Debug\Pages\ScoresPage.baml
@@ -73,5 +76,4 @@ C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManager\obj\Debug\ScoreManager.csproj.Co
 C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManager\obj\Debug\ScoreManager.csproj.CopyComplete
 C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManager\obj\Debug\ScoreManager.exe
 C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManager\obj\Debug\ScoreManager.pdb
-C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManager\bin\Debug\userman.pdf
 C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManager\obj\Debug\ScoreManager.csprojAssemblyReference.cache

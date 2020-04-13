@@ -31,7 +31,7 @@ namespace ScoreManager.SubWindows
         public async void Send(string Message)
         {
             string License = lClass.GetLicenseKey();
-            lClass.GetLicenseInfo(License, out string Name, out string Email);
+            lClass.GetLicenseNameEmail(License, out string Name, out string Email);
             string body = String.Format("Sender: \n" +
                 "LICENSE = {0} \n" +
                 "NAME = {1} \n" +

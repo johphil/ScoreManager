@@ -16,6 +16,15 @@ namespace ScoreManager.Class
     {
         public bool IsSuccessSendMail { get; set; }
 
+        /// <summary>
+        /// Loads the Email information of the user and updates it to the UI.
+        /// </summary>
+        /// <param name="UseMail">Indicates if send using GMAIL or MAPUA MAIL</param>
+        /// <param name="EmailAddress1">Gmail address</param>
+        /// <param name="EmailPassword1">Gmail password</param>
+        /// <param name="EmailAddress2">Office365 address</param>
+        /// <param name="EmailPassword2">Office365 password</param>
+        /// <param name="EmailFooter">Footer text to be added is email</param>
         public void LoadEmailSettings(out int UseMail, out string EmailAddress1, out string EmailPassword1, out string EmailAddress2, out string EmailPassword2, out string EmailFooter)
         {
             try
@@ -63,6 +72,15 @@ namespace ScoreManager.Class
             }
         }
 
+        /// <summary>
+        /// Saves the Email information of the user to database.
+        /// </summary>
+        /// <param name="UseMail">Indicates if send using GMAIL or MAPUA MAIL</param>
+        /// <param name="EmailAddress1">Gmail address</param>
+        /// <param name="EmailPassword1">Gmail password</param>
+        /// <param name="EmailAddress2">Office365 address</param>
+        /// <param name="EmailPassword2">Office365 password</param>
+        /// <param name="EmailFooter">Footer text to be added is email</param>
         public void SaveEmailSettings(int UseMail, string EmailAddress1, string EmailPassword1, string EmailAddress2, string EmailPassword2, string EmailFooter)
         {
             try
@@ -91,6 +109,16 @@ namespace ScoreManager.Class
             }
         }
 
+        /// <summary>
+        /// Sends mail to a single recipient.
+        /// </summary>
+        /// <param name="UseMail">Indicates if send using GMAIL or MAPUA MAIL</param>
+        /// <param name="EmailFromAddr">Email address to be used by user</param>
+        /// <param name="EmailFromPass">Password of the email address used</param>
+        /// <param name="EmailToAddr">Recipient's email address</param>
+        /// <param name="Subject">Subject of the email</param>
+        /// <param name="Body">Body of the email</param>
+        /// <returns></returns>
         public async Task SendMail(int UseMail, string EmailFromAddr, string EmailFromPass, string EmailToAddr, string Subject, string Body)
         {
             string smtp;
@@ -136,6 +164,16 @@ namespace ScoreManager.Class
             }
         }
 
+        /// <summary>
+        /// Send email to many, single execution. Can be used for announcements. Not for grade verification. Not yet used, for future maybe.
+        /// </summary>
+        /// <param name="UseMail">Indicates if send using GMAIL or MAPUA MAIL</param>
+        /// <param name="EmailFromAddr">Email address to be used by user</param>
+        /// <param name="EmailFromPass">Password of the email address used</param>
+        /// <param name="EmailToAddr">Recipient's email address</param>
+        /// <param name="Subject">Subject of the email</param>
+        /// <param name="Body">Body of the email</param>
+        /// <returns></returns>
         public bool SendMailMultiple(int UseMail, string EmailFromAddr, string EmailFromPass, List<string> EmailToAddr, string Subject, string Body)
         {
             string smtp;

@@ -12,6 +12,10 @@ namespace ScoreManager.Class
 {
     class Term
     {
+        /// <summary>
+        /// Insert new term into database
+        /// </summary>
+        /// <param name="Term"></param>
         public void AddTerm(string Term)
         {
             try
@@ -33,6 +37,11 @@ namespace ScoreManager.Class
             }
         }
 
+        /// <summary>
+        /// Update the term information in the database
+        /// </summary>
+        /// <param name="ID">ID of the term</param>
+        /// <param name="Term">Name of the term (e.g. 1Q1920, 2Q1920, etc.)</param>
         public void UpdateTerm(int ID, string Term)
         {
             try
@@ -57,6 +66,10 @@ namespace ScoreManager.Class
             }
         }
 
+        /// <summary>
+        /// Remove/delete a term
+        /// </summary>
+        /// <param name="ID">ID of the term to be removed</param>
         public void RemoveTerm(int ID)
         {
             try
@@ -78,6 +91,11 @@ namespace ScoreManager.Class
             }
         }
 
+        /// <summary>
+        /// Returns an observablecollection of Term of the selected Exam
+        /// </summary>
+        /// <param name="ExamID">ID of the selected exam</param>
+        /// <returns></returns>
         public ObservableCollection<Models._Term> GetTerms(int ExamID)
         {
             try
@@ -122,6 +140,10 @@ namespace ScoreManager.Class
             }
         }
 
+        /// <summary>
+        /// Gets all inserted terms. Returns observablecollection of Term.
+        /// </summary>
+        /// <returns></returns>
         public ObservableCollection<Models._Term> GetTerms()
         {
             try
@@ -157,7 +179,12 @@ namespace ScoreManager.Class
             }
         }
 
-        public Tuple<List<int>, List<string>> GetTerms_List(bool ForSearch)
+        /// <summary>
+        /// Returns two lists. One for the ID and the second is for the Name of the term. Used in combobox, when user picks a term.
+        /// </summary>
+        /// <param name="ForSearch"></param>
+        /// <returns></returns>
+        public Tuple<List<int>, List<string>> GetTerms_List()
         {
             try
             {
@@ -172,12 +199,6 @@ namespace ScoreManager.Class
                         {
                             List<int> t = new List<int>();
                             List<string> t2 = new List<string>();
-
-                            if (ForSearch)
-                            {
-                                t.Add(0);
-                                t2.Add("ALL");
-                            }
 
                             while (reader.Read())
                             {
@@ -196,8 +217,13 @@ namespace ScoreManager.Class
                 return Tuple.Create<List<int>, List<string>>(null, null);
             }
         }
-
-        public bool IsInUse(int ID)
+        
+        /// <summary>
+        /// Returns Boolean value if the term is in used by other exams/class. This is to prevent errors when loading the terms of a selected exam and the term was already deleted.
+        /// </summary>
+        /// <param name="ID">ID of the term</param>
+        /// <returns></returns>
+        public bool IsTermInUse(int ID)
         {
             try
             {

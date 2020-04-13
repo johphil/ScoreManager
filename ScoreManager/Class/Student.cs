@@ -12,6 +12,12 @@ namespace ScoreManager.Class
 {
     class Student
     {
+        /// <summary>
+        /// Returns an observablecollection of Students in a selected exam and term
+        /// </summary>
+        /// <param name="ExamID">ID of the selected exam</param>
+        /// <param name="TermID">ID of the selected term in the exam</param>
+        /// <returns></returns>
         public ObservableCollection<Models._Student> GetStudentsInfoInExam(int ExamID, int TermID)
         {
             try
@@ -54,6 +60,13 @@ namespace ScoreManager.Class
             }
         }
 
+        /// <summary>
+        /// Using out keywords, gets the student's information (student number, name, program and email)
+        /// </summary>
+        /// <param name="StudentID">Student number/id as an input</param>
+        /// <param name="Name">Name of the student</param>
+        /// <param name="Program">Program of the student (e.g. ECE)</param>
+        /// <param name="Email">Email address of the student</param>
         public void StudentInfo(string StudentID, out string Name, out string Program, out string Email)
         {
             try
@@ -95,6 +108,11 @@ namespace ScoreManager.Class
             }
         }
         
+        /// <summary>
+        /// Returns the list of the Classes/Exams where the student has enrolled.
+        /// </summary>
+        /// <param name="StudentID">Student number/ID</param>
+        /// <returns></returns>
         public List<Models._Exam> GetSingleStudentExams(string StudentID)
         {
             try
@@ -130,6 +148,12 @@ namespace ScoreManager.Class
             }
         }
 
+        /// <summary>
+        /// Returns the list of the terms of the selected class/exam where the student has enrolled
+        /// </summary>
+        /// <param name="StudentID">Student number/ID</param>
+        /// <param name="ExamID">ID of the selected exam</param>
+        /// <returns></returns>
         public List<Models._Term> GetSingleStudentTerms(string StudentID, int ExamID)
         {
             try

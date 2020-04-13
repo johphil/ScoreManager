@@ -9,6 +9,11 @@ namespace ScoreManager.Class
 {
     class Logging
     {
+        /// <summary>
+        /// Writes the errors when sending an email for the whole class/exam. (e.g. [Student_ID] Email is invalid).
+        /// </summary>
+        /// <param name="FileName">Name of the error file</param>
+        /// <param name="Content">Error logs</param>
         public void WriteToFileErrors(string FileName, string Content)
         {
             if (!Directory.Exists(Globals.PATH_EMAIL_ERRORS))
@@ -18,7 +23,6 @@ namespace ScoreManager.Class
 
             using (StreamWriter file = new StreamWriter(Globals.PATH_EMAIL_ERRORS + FileName))
             {
-                //hash muna
                 file.WriteLine(Content);
             }
         }

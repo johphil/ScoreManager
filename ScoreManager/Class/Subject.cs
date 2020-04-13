@@ -12,6 +12,11 @@ namespace ScoreManager.Class
 {
     class Subject
     {
+        /// <summary>
+        /// Adds subject to selected exam
+        /// </summary>
+        /// <param name="ExamID">ID of the selected exam</param>
+        /// <param name="Subject">Name/Title of the subject (e.g. Math)</param>
         public void AddSubject(int ExamID, string Subject)
         {
             try
@@ -34,6 +39,11 @@ namespace ScoreManager.Class
             }
         }
 
+        /// <summary>
+        /// Update the information of the subject.
+        /// </summary>
+        /// <param name="ID">ID of the subject</param>
+        /// <param name="Subject">Name/Title of the subject</param>
         public void UpdateSubject(int ID, string Subject)
         {
             try
@@ -58,6 +68,10 @@ namespace ScoreManager.Class
             }
         }
 
+        /// <summary>
+        /// Remove/delete the selected subject
+        /// </summary>
+        /// <param name="ID">ID of the subject</param>
         public void RemoveSubject(int ID)
         {
             try
@@ -78,7 +92,12 @@ namespace ScoreManager.Class
                 MessageBox.Show(ex.Message, "Database Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
+        
+        /// <summary>
+        /// Returns an observablecollection of subjects of the selected exam
+        /// </summary>
+        /// <param name="ExamID">ID of the selected exam</param>
+        /// <returns></returns>
         public ObservableCollection<Models._Subject> GetSubjects(int ExamID)
         {
             try

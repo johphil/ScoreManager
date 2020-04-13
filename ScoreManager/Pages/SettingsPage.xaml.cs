@@ -31,7 +31,7 @@ namespace ScoreManager.Pages
             this.mWin = mWin;
 
             License lClass = new License();
-            lClass.GetLicenseInfo(lClass.GetLicenseKey(), out string name, out string email);
+            lClass.GetLicenseNameEmail(lClass.GetLicenseKey(), out string name, out string email);
 
             txtAppName.Text = Application.ResourceAssembly.GetName().Name;
             txtAppVersion.Text = Application.ResourceAssembly.GetName().Version.ToString();
@@ -95,7 +95,7 @@ namespace ScoreManager.Pages
             if (dWin.isDeactivate)
             {
                 mWin.isLogout = true;
-                mWin.Logout();
+                mWin.Close();
             }
         }
 
@@ -129,6 +129,18 @@ namespace ScoreManager.Pages
             }
             else
                 MessageBox.Show("Could not find user manual. Please reinstall the application.", "File Not Found", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+        }
+
+        private void BtnBackup_Click(object sender, RoutedEventArgs e)
+        {
+            SubWindows.BackupWindow bWin = new SubWindows.BackupWindow();
+            bWin.ShowDialog();
+
+            if (bWin.isRestore)
+            {
+                mWin.isLogout = true;
+                mWin.Close();
+            }
         }
     }
 }

@@ -120,7 +120,7 @@ namespace ScoreManager.SubWindows
 
         private void BtnRemove_Click(object sender, RoutedEventArgs e)
         {
-            if (tClass.IsInUse(_t.ID))
+            if (tClass.IsTermInUse(_t.ID))
                 MessageBox.Show("THIS TERM IS IN USE AND CANNOT BE DELETED.", "IN USE", MessageBoxButton.OK, MessageBoxImage.Information);
             else
             {

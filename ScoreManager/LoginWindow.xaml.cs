@@ -43,8 +43,8 @@ namespace ScoreManager
             if (lClass.IsLicenseFileExists())
             {
                 string License = lClass.GetLicenseKey();
-                lClass.GetLicenseInfo(License, out string Name, out string Email);
-                lClass.GetUsernamePassword(License, out string Username, out string Password);
+                lClass.GetLicenseNameEmail(License, out string Name, out string Email);
+                lClass.GetLicenseUserPass(License, out string Username, out string Password);
                 string body = String.Format("Your account details: \n" +
                     "NAME: {0} \n" +
                     "USERNAME: {1} \n" +
@@ -53,9 +53,9 @@ namespace ScoreManager
                 await emClass.SendMail(Globals.USE_EMAIL_GMAIL, Globals.EmailSenderUsername, Globals.EmailSenderPassword, Email, "Score Manager Forgot Password", body);
 
                 if (emClass.IsSuccessSendMail)
-                    MessageBox.Show("Please check your email.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show(String.Format("An email was sent to:.\n\n{0}", Email), "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                 else
-                    MessageBox.Show("Please try again.", "Try Again", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    MessageBox.Show("Account not found! Please activate your license and try again.", "Try Again", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
             this.IsEnabled = true;
         }

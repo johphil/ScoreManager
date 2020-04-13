@@ -10,11 +10,11 @@ none
 false
 TRACE
 C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManager\App.xaml
-13801180939
+142114128016
 2-1177361418
-34675097847
+362003103607
 31-1075508514
-LoginWindow.xaml;MainWindow.xaml;SubWindows\FeedbackWindow.xaml;SubWindows\RegistrationWindow.xaml;Pages\ScoresPage.xaml;Pages\HomePage.xaml;Pages\EnrollmentPage.xaml;Pages\SettingsPage.xaml;Pages\VerifyPage.xaml;SubWindows\DeactivateWindow.xaml;SubWindows\ExamManageWindow.xaml;SubWindows\LicenseWindow.xaml;SubWindows\TermWindow.xaml;
+LoginWindow.xaml;MainWindow.xaml;SubWindows\BackupWindow.xaml;SubWindows\FeedbackWindow.xaml;SubWindows\RegistrationWindow.xaml;Pages\ScoresPage.xaml;Pages\HomePage.xaml;Pages\EnrollmentPage.xaml;Pages\SettingsPage.xaml;Pages\VerifyPage.xaml;SubWindows\DeactivateWindow.xaml;SubWindows\ExamManageWindow.xaml;SubWindows\LicenseWindow.xaml;SubWindows\TermWindow.xaml;
 
 False
 

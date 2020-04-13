@@ -19,6 +19,9 @@ namespace ScoreManager
 {
     class License
     {
+        /// <summary>
+        /// FIREBASE METHODS (READ, WRITE, CHECK CONNECTION)
+        /// </summary>
         #region FIREBASE
         public _User _user;
         private IFirebaseClient fbClient;
@@ -42,7 +45,7 @@ namespace ScoreManager
         {
             if (IsFirebaseConnected())
             {
-                FirebaseResponse fbResponse = await fbClient.GetTaskAsync(Globals.PATH_LICENSE + License);
+                FirebaseResponse fbResponse = await fbClient.GetTaskAsync(Globals.FIREBASE_PATH_LICENSE + License);
                 _user = null;
 
                 try
@@ -81,7 +84,7 @@ namespace ScoreManager
                                 _user.PASSWORD = reader[3].ToString();
                                 _user.ISACTIVATED = 0;
 
-                                await fbClient.SetTaskAsync(Globals.PATH_LICENSE + License, _user);
+                                await fbClient.SetTaskAsync(Globals.FIREBASE_PATH_LICENSE + License, _user);
                             }
                         }
                     }
@@ -94,7 +97,13 @@ namespace ScoreManager
         }
         #endregion
 
-        //insert registered user to local database
+        /// <summary>
+        /// Activates the license, insert the user information into the local database and creates a license file.
+        /// </summary>
+        /// <param name="License">License key of the user</param>
+        /// <param name="ProcessorID">Processor ID of the device. Used to prevent the illegal distribution of the system.</param>
+        /// <param name="_user">Hold the informatino of the user</param>
+        /// <returns></returns>
         public async Task Activate(string License, string ProcessorID, _User _user)
         {
             try
@@ -104,7 +113,7 @@ namespace ScoreManager
 
                 using (StreamWriter file = new StreamWriter(Globals.LicenseFile))
                 {
-                    //hash muna
+                    //insert hashing
                     file.WriteLine(License);
                 }
 
@@ -132,7 +141,10 @@ namespace ScoreManager
             }
         }
 
-        //check kung existing ang license.txt
+        /// <summary>
+        /// Checks if the license file exists
+        /// </summary>
+        /// <returns></returns>
         public bool IsLicenseFileExists()
         {
             if (File.Exists(Globals.LicenseFile))
@@ -141,14 +153,18 @@ namespace ScoreManager
                 return false;
         }
 
-        //get license file key
+        /// <summary>
+        /// Get the license key that was written in the license file
+        /// </summary>
+        /// <returns></returns>
         public string GetLicenseKey()
         {
             try
             {   // Open the text file using a stream reader.
                 using (StreamReader sr = new StreamReader(Globals.LicenseFile))
                 {
-                    // Read the stream to a string, and write the string to the console.
+                    // Read the stream to a string
+                    // insert dehash
                     return sr.ReadToEnd().Trim();
                 }
             }
@@ -158,7 +174,13 @@ namespace ScoreManager
             }
         }
 
-        public void GetUsernamePassword(string License, out string Username, out string Password)
+        /// <summary>
+        /// Gets the username and password of the currently activated user. (kukunin yung userpass ng activated na license)
+        /// </summary>
+        /// <param name="License">License key</param>
+        /// <param name="Username">Username of the licensed user</param>
+        /// <param name="Password">Password of the licensed user</param>
+        public void GetLicenseUserPass(string License, out string Username, out string Password)
         {
             try
             {
@@ -193,8 +215,13 @@ namespace ScoreManager
             }
         }
 
-        //kunin ang name at email ng licensed user
-        public void GetLicenseInfo(string License, out string Name, out string Email)
+        /// <summary>
+        /// Gets the name and email of the licensed user
+        /// </summary>
+        /// <param name="License">License key</param>
+        /// <param name="Name">Name of the registered user</param>
+        /// <param name="Email">Email of the registered user</param>
+        public void GetLicenseNameEmail(string License, out string Name, out string Email)
         {
             try
             {
@@ -229,7 +256,12 @@ namespace ScoreManager
             }
         }
 
-        //check if isactivated == 1 and check device if same
+        /// <summary>
+        /// Checks the database of the user's license is activated, existing, or not 
+        /// </summary>
+        /// <param name="License">License Key</param>
+        /// <param name="ProcessorID">Processor of the device</param>
+        /// <returns></returns>
         public bool IsActivated(string License, string ProcessorID)
         {
             try
@@ -263,8 +295,12 @@ namespace ScoreManager
                 return false;
             }
         }
-
-        //check if isactivated with another device
+        
+        /// <summary>
+        /// Checks if the processor id of the current device is equal to the activated processor id of the user in the database.
+        /// </summary>
+        /// <param name="License">License key</param>
+        /// <returns></returns>
         public bool IsActivatedNotSameDevice(string License)
         {
             try
@@ -298,7 +334,11 @@ namespace ScoreManager
             }
         }
 
-        //check if isactivated == 0
+        /// <summary>
+        /// Checks if the License Key has already been activated or not
+        /// </summary>
+        /// <param name="License"></param>
+        /// <returns></returns>
         public bool ForActivation(string License)
         {
             try
@@ -332,7 +372,10 @@ namespace ScoreManager
             }
         }
 
-        //get processor id
+        /// <summary>
+        /// Gets the processor ID of the current device.
+        /// </summary>
+        /// <returns></returns>
         public string GetProcessorID()
         {
             var processorID = "";
@@ -348,7 +391,10 @@ namespace ScoreManager
             return processorID.Trim();
         }
 
-        //deactivate license
+        /// <summary>
+        /// Deactivate the license by setting the ISACTIVATED = 0 in the database
+        /// </summary>
+        /// <param name="License"></param>
         public void Deactivate(string License)
         {
             try

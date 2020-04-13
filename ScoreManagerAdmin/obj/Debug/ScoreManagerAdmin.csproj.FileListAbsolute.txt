@@ -20,3 +20,5 @@ C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManagerAdmin\obj\Debug\ScoreManagerAdmin
 C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManagerAdmin\obj\Debug\ScoreManagerAdmin.csproj.CopyComplete
 C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManagerAdmin\obj\Debug\ScoreManagerAdmin.exe
 C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManagerAdmin\obj\Debug\ScoreManagerAdmin.pdb
+C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManagerAdmin\bin\Debug\ScoreManagerAdmin.exe.CodeAnalysisLog.xml
+C:\Users\PHIL\Dev\WPF\ScoreManager\ScoreManagerAdmin\bin\Debug\ScoreManagerAdmin.exe.lastcodeanalysissucceeded

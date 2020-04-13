@@ -12,6 +12,10 @@ namespace ScoreManager.Class
 {
     class Exam
     {
+        /// <summary>
+        /// Insert single item exam to database.
+        /// </summary>
+        /// <param name="Name">Name of the exam or class (e.g. ECE CORREL, CE CORREL, etc.)</param>
         public void AddExam(string Name)
         {
             try
@@ -33,6 +37,11 @@ namespace ScoreManager.Class
             }
         }
 
+        /// <summary>
+        /// Used to add a term in a chosen exam or class (e.g. ECE CORREL -> 2Q1920). 2Q1920 will be added to the 'ECE CORREL' exam.
+        /// </summary>
+        /// <param name="ExamID">ID of the exam</param>
+        /// <param name="TermID">ID of the term</param>
         public void AddExamTerm(int ExamID, int TermID)
         {
             try
@@ -55,6 +64,10 @@ namespace ScoreManager.Class
             }
         }
 
+        /// <summary>
+        /// Remove/delete an exam 
+        /// </summary>
+        /// <param name="ID">ID of the exam to be deleted</param>
         public void RemoveExam(int ID)
         {
             try
@@ -77,6 +90,11 @@ namespace ScoreManager.Class
             }
         }
 
+        /// <summary>
+        /// Remove term from an exam
+        /// </summary>
+        /// <param name="ExamID">ID of the selected exam</param>
+        /// <param name="TermID">ID of the selected term</param>
         public void RemoveExamTerm(int ExamID, int TermID)
         {
             try
@@ -100,6 +118,10 @@ namespace ScoreManager.Class
             }
         }
 
+        /// <summary>
+        /// Returns an observablecollection of Exams
+        /// </summary>
+        /// <returns></returns>
         public ObservableCollection<Models._Exam> GetExams()
         {
             try
@@ -132,46 +154,6 @@ namespace ScoreManager.Class
             {
                 MessageBox.Show(ex.Message, "Database Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return null;
-            }
-        }
-
-        public Tuple<List<int>, List<string>> GetExams_List(bool ForSearch)
-        {
-            try
-            {
-                using (SQLiteConnection conn = new SQLiteConnection(Globals.DbConString))
-                {
-                    string query = "SELECT ID, NAME FROM tblExams ORDER BY ID DESC;";
-                    using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
-                    {
-                        conn.Open();
-
-                        using (SQLiteDataReader reader = cmd.ExecuteReader())
-                        {
-                            List<int> e = new List<int>();
-                            List<string> e2 = new List<string>();
-
-                            if (ForSearch)
-                            {
-                                e.Add(0);
-                                e2.Add("ALL");
-                            }
-
-                            while (reader.Read())
-                            {
-                                e.Add(int.Parse(reader[0].ToString()));    //ID
-                                e2.Add(reader[1].ToString());   //NAME
-                            }
-
-                            return Tuple.Create(e, e2);
-                        }
-                    }
-                }
-            }
-            catch (SQLiteException ex)
-            {
-                MessageBox.Show(ex.Message, "Database Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return Tuple.Create<List<int>, List<string>>(null, null);
             }
         }
     }

@@ -30,7 +30,7 @@ namespace ScoreManager.SubWindows
             License = lClass.GetLicenseKey();
 
 
-            lClass.GetLicenseInfo(License, out string name, out string email);
+            lClass.GetLicenseNameEmail(License, out string name, out string email);
 
             txtLicense.Text = name;
             txtEmail.Text = email;

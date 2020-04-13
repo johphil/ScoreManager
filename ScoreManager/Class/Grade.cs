@@ -12,6 +12,12 @@ namespace ScoreManager.Class
 {
     class Grade
     {
+        /// <summary>
+        /// Returns a datatable of all students enrolled in a class/exam to be used in filling up the datagrid 
+        /// </summary>
+        /// <param name="ExamID">ID of the selected exam</param>
+        /// <param name="TermID">ID of the selected term</param>
+        /// <returns></returns>
         public DataTable GetStudentsGradeInExam(int ExamID, int TermID)
         {
             try
@@ -41,6 +47,13 @@ namespace ScoreManager.Class
             }
         }
 
+        /// <summary>
+        /// Gets the result of a student in a selected exam. Returns datatable.
+        /// </summary>
+        /// <param name="StudentID">Student Number/ID of the student</param>
+        /// <param name="ExamID">ID of the selected exam</param>
+        /// <param name="TermID">ID of the selected term in the exam</param>
+        /// <returns></returns>
         public DataTable GetSingleGradeInExam(string StudentID, int ExamID, int TermID)
         {
             try
@@ -71,6 +84,14 @@ namespace ScoreManager.Class
             }
         }
 
+        /// <summary>
+        /// Saves the scores of the students into database.
+        /// </summary>
+        /// <param name="ExamID">ID of the EXAM</param>
+        /// <param name="TermID">ID of the term</param>
+        /// <param name="StudentID">Student Number/ID</param>
+        /// <param name="SubjectID">A subject in an exam (e.g. MATH, GEAS, EST, ELEC for ECE CORREL)</param>
+        /// <param name="Grade">The grade/score of the student in that subject</param>
         public void SaveStudentScores(int ExamID, int TermID, string StudentID, int SubjectID, double Grade)
         {
             try

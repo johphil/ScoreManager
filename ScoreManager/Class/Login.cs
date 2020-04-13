@@ -11,6 +11,12 @@ namespace ScoreManager.Class
 {
     class Login : License
     {
+        /// <summary>
+        /// Login using the registered username and password.
+        /// </summary>
+        /// <param name="Username">username of the user</param>
+        /// <param name="Password">password of the user</param>
+        /// <returns></returns>
         public int SignIn(string Username, string Password)
         {
             try

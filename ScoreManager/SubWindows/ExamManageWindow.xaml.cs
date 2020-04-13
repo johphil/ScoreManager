@@ -67,7 +67,7 @@ namespace ScoreManager.SubWindows
 
         private void LoadComboBoxTerms()
         {
-            var tupleTerms = tClass.GetTerms_List(false);
+            var tupleTerms = tClass.GetTerms_List();
             lTermID = tupleTerms.Item1;
             lTerm = tupleTerms.Item2;
 

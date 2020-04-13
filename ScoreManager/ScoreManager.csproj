@@ -100,11 +100,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Class\Data.cs" />
     <Compile Include="Class\Email.cs" />
     <Compile Include="Class\Logging.cs" />
     <Compile Include="Class\Term.cs" />
     <Compile Include="License.cs" />
     <Compile Include="Models\_Term.cs" />
+    <Compile Include="SubWindows\BackupWindow.xaml.cs">
+      <DependentUpon>BackupWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SubWindows\FeedbackWindow.xaml.cs">
       <DependentUpon>FeedbackWindow.xaml</DependentUpon>
     </Compile>
@@ -152,6 +156,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SubWindows\BackupWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -276,6 +284,7 @@
     <Resource Include="img\btn-send-single.png" />
     <Resource Include="img\btn-deactivate.png" />
     <Resource Include="img\btn-feedback.png" />
+    <Resource Include="img\btn-backup.png" />
     <Content Include="msvcr100.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
