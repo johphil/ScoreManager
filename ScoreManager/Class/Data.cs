@@ -15,14 +15,14 @@ namespace ScoreManager.Class
         /// <summary>
         /// Creates a backup file of the database
         /// </summary>
-        public void BackupData()
+        public void BackupData(bool isAutoBackup)
         {
             try
             {
                 if (!Directory.Exists(Globals.PATH_DATA))
                     Directory.CreateDirectory(Globals.PATH_DATA);
-
-                string BackupFName = Globals.DbBackupPathFile();
+                
+                string BackupFName = isAutoBackup? Globals.DbBackupPathFile2() : Globals.DbBackupPathFile();
                 File.Copy(Globals.DbPathFile, BackupFName, true);
 
                 MessageBox.Show(BackupFName.Remove(0, 6) + " created.", "Backup Success", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -88,5 +88,59 @@ namespace ScoreManager.Class
                 return false;
             }
         }
+
+        public void SaveAutoBackup(int IsAutoBackup)
+        {
+            try
+            {
+                using (SQLiteConnection conn = new SQLiteConnection(Globals.DbConString))
+                {
+                    string query = "UPDATE tblSettings SET " +
+                        "AUTO_BACKUP = @autobackup " +
+                        "WHERE ID = 1;";
+                    using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                    {
+                        conn.Open();
+                        cmd.Parameters.Add("@autobackup", System.Data.DbType.Int32).Value = IsAutoBackup;
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (SQLiteException ex)
+            {
+                MessageBox.Show(ex.Message, "Database Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        public int LoadAutoBackup()
+        {
+            try
+            {
+                using (SQLiteConnection conn = new SQLiteConnection(Globals.DbConString))
+                {
+                    string query = "SELECT AUTO_BACKUP FROM tblSettings WHERE ID = 1;";
+
+                    using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                    {
+                        conn.Open();
+
+                        using (SQLiteDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                                return Convert.ToInt32(reader[0].ToString());
+                            else
+                                return Globals.AUTO_BACKUP_UNCHECK;
+                        }
+                    }
+                }
+            }
+            catch (SQLiteException ex)
+            {
+                MessageBox.Show(ex.Message, "Database Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return Globals.AUTO_BACKUP_UNCHECK;
+            }
+        }
+
+
     }
 }

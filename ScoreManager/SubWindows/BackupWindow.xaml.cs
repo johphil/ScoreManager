@@ -23,6 +23,7 @@ namespace ScoreManager.SubWindows
         {
             InitializeComponent();
             LoadBackups();
+            LoadAutoBackupSetting();
         }
 
         /**************************************************************************/
@@ -37,10 +38,18 @@ namespace ScoreManager.SubWindows
             if (backupFiles != null)
                 lbBackups.ItemsSource = backupFiles;
         }
+
+        private void LoadAutoBackupSetting()
+        {
+            if (dClass.LoadAutoBackup() == Globals.AUTO_BACKUP_CHECK)
+                rbAutoBackup.IsChecked = true;
+            else
+                rbAutoBackup.IsChecked = false;
+        }
         /**************************************************************************/
         private void BtnCreateBackup_Click(object sender, RoutedEventArgs e)
         {
-            dClass.BackupData();
+            dClass.BackupData(false);
             LoadBackups();
         }
 
@@ -71,6 +80,14 @@ namespace ScoreManager.SubWindows
             }
             else
                 MessageBox.Show("Please select a backup to be deleted.", "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+        }
+
+        private void RbAutoBackup_Click(object sender, RoutedEventArgs e)
+        {
+            if (rbAutoBackup.IsChecked == true)
+                dClass.SaveAutoBackup(Globals.AUTO_BACKUP_CHECK);
+            else
+                dClass.SaveAutoBackup(Globals.AUTO_BACKUP_UNCHECK);
         }
     }
 }

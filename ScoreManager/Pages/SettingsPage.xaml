@@ -71,18 +71,18 @@
         <Separator Height="44" Margin="638,260,36,0" VerticalAlignment="Top"/>
         <Grid Margin="10,95,417,10" Background="Gainsboro">
             <TextBlock HorizontalAlignment="Left" Style="{StaticResource ResourceKey=txtHeader3}" Margin="10,10,0,0" TextWrapping="Wrap" Text="EMAIL SETTINGS" VerticalAlignment="Top"/>
-            <xctk:WatermarkTextBox x:Name="tbEmailAddress1" Watermark="@gmail.com" Height="27" Margin="154,100,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-            <TextBlock Margin="10,100,448,0" Style="{StaticResource txtNormal}" TextWrapping="Wrap" Text="Email Address: " VerticalAlignment="Top"/>
-            <TextBlock Margin="10,132,448,0" Style="{StaticResource txtNormal}" TextWrapping="Wrap" Text="Password: " VerticalAlignment="Top"/>
-            <xctk:WatermarkPasswordBox x:Name="tbPassword1" Watermark="Enter the password for the email above." Height="27" Margin="154,132,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-            <TextBlock Margin="10,300,448,0" Style="{StaticResource txtNormal}" TextWrapping="Wrap" Text="Email Footer: " VerticalAlignment="Top"/>
-            <Button x:Name="btnSave" BorderBrush="{x:Null}" Background="{x:Null}" Cursor="Hand" Click="BtnSave_Click" Margin="517,432,10,10">
+            <xctk:WatermarkTextBox x:Name="tbEmailAddress1" Watermark="@gmail.com" Height="27" Margin="154,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" TabIndex="0" HorizontalAlignment="Left" Width="415"/>
+            <TextBlock Margin="10,100,0,0" Style="{StaticResource txtNormal}" TextWrapping="Wrap" Text="Email Address" VerticalAlignment="Top" HorizontalAlignment="Left" Width="144"/>
+            <TextBlock Margin="10,132,0,0" Style="{StaticResource txtNormal}" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" HorizontalAlignment="Left" Width="144"/>
+            <xctk:WatermarkPasswordBox x:Name="tbPassword1" Watermark="Enter the password for the email above." Height="27" Margin="154,132,0,0" TextWrapping="Wrap" VerticalAlignment="Top" TabIndex="1" HorizontalAlignment="Left" Width="415"/>
+            <TextBlock Margin="10,300,0,0" Style="{StaticResource txtNormal}" TextWrapping="Wrap" Text="Email Footer" VerticalAlignment="Top" HorizontalAlignment="Left" Width="144"/>
+            <Button x:Name="btnSave" BorderBrush="{x:Null}" Background="{x:Null}" Cursor="Hand" Click="BtnSave_Click" Margin="517,432,10,10" TabIndex="5" IsTabStop="False">
                 <StackPanel Orientation="Vertical">
                     <Image Source="/ScoreManager;component/img/btn-save.png" Height="40"/>
                     <TextBlock Text="SAVE" VerticalAlignment="Center" TextAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" />
                 </StackPanel>
             </Button>
-            <RichTextBox x:Name="tbFooter" Height="127" Margin="154,300,10,0" VerticalAlignment="Top">
+            <RichTextBox x:Name="tbFooter" Height="127" Margin="154,300,0,0" VerticalAlignment="Top" TabIndex="4" HorizontalAlignment="Left" Width="415">
                 <FlowDocument>
                     <Paragraph>
                         <Run Text=""/>
@@ -90,10 +90,10 @@
                 </FlowDocument>
             </RichTextBox>
             <Separator Height="20" Margin="10,42,10,0" VerticalAlignment="Top"/>
-            <xctk:WatermarkTextBox x:Name="tbEmailAddress2" Watermark="@mymail.mapua.edu.ph or @mapua.edu.ph" Height="27" Margin="154,211,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-            <TextBlock Margin="10,211,448,0" Style="{StaticResource txtNormal}" TextWrapping="Wrap" Text="Email Address: " VerticalAlignment="Top"/>
-            <TextBlock Margin="10,243,448,0" Style="{StaticResource txtNormal}" TextWrapping="Wrap" Text="Password: " VerticalAlignment="Top"/>
-            <xctk:WatermarkPasswordBox x:Name="tbPassword2" Watermark="Enter the password for the email above." Height="27" Margin="154,243,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+            <xctk:WatermarkTextBox x:Name="tbEmailAddress2" Watermark="@mymail.mapua.edu.ph or @mapua.edu.ph" Height="27" Margin="154,211,0,0" TextWrapping="Wrap" VerticalAlignment="Top" TabIndex="2" HorizontalAlignment="Left" Width="415"/>
+            <TextBlock Margin="10,211,0,0" Style="{StaticResource txtNormal}" TextWrapping="Wrap" Text="Email Address" VerticalAlignment="Top" HorizontalAlignment="Left" Width="144"/>
+            <TextBlock Margin="10,243,0,0" Style="{StaticResource txtNormal}" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" HorizontalAlignment="Left" Width="144"/>
+            <xctk:WatermarkPasswordBox x:Name="tbPassword2" Watermark="Enter the password for the email above." Height="27" Margin="154,243,0,0" TextWrapping="Wrap" VerticalAlignment="Top" TabIndex="3" HorizontalAlignment="Left" Width="415"/>
             <Separator Height="20" Margin="10,275,10,0" VerticalAlignment="Top"/>
             <RadioButton x:Name="rbGmail" Content="GMAIL" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top" FontFamily="Impact" FontSize="18" Width="122" Padding="5,5,0,5"/>
             <RadioButton x:Name="rbMapuaMail" Content="MAPUA MAIL" HorizontalAlignment="Left" Margin="10,174,0,0" VerticalAlignment="Top" FontFamily="Impact" FontSize="18" Width="122" Padding="5,5,0,5"/>

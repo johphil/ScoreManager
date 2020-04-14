@@ -19,6 +19,14 @@ namespace ScoreManager
             datetimeformat = datetimeformat.Replace(" ", "");
             return string.Format(@"{0}\dbScoreManager_{1}.db",PATH_DATA, datetimeformat);
         }
+        public static string DbBackupPathFile2()
+        {
+            string datetimeformat = DateTime.Now.ToShortDateString() + DateTime.Now.ToLongTimeString();
+            datetimeformat = datetimeformat.Replace("/", "");
+            datetimeformat = datetimeformat.Replace(":", "");
+            datetimeformat = datetimeformat.Replace(" ", "");
+            return string.Format(@"{0}\dbScoreManager_AutoBackup_{1}.db", PATH_DATA, datetimeformat);
+        }
 
         /*LICENSE FILE NAME*/
         public static string LicenseFile = "license.txt";
@@ -46,5 +54,9 @@ namespace ScoreManager
         /*MESSAGE*/
         public static string MSG_ACTIVATE = "You have successfully activated your license! Enjoy! =)";
         public static string MSG_DEACTIVATE = "You have successfully deactivated your license! Thank you for using Score Manager!";
+
+        /*AUTO BACKUP*/
+        public static int AUTO_BACKUP_CHECK = 1;
+        public static int AUTO_BACKUP_UNCHECK = 0;
     }
 }

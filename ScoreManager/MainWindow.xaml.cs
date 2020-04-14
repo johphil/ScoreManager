@@ -39,6 +39,11 @@ namespace ScoreManager
             }
             else
             {
+                Class.Data dClass = new Class.Data();
+
+                if (dClass.LoadAutoBackup() == Globals.AUTO_BACKUP_CHECK)
+                    dClass.BackupData(true);
+
                 if (!isLogout && !isWorking)
                     Application.Current.Shutdown();
                 else if (isLogout && !isWorking)

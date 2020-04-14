@@ -40,12 +40,12 @@ namespace ScoreManager.Class
                         {
                             if (reader.Read())
                             {
-                                UseMail = Convert.ToInt32(reader[1]);
-                                EmailAddress1 = reader[2].ToString();
-                                EmailPassword1 = reader[3].ToString();
-                                EmailAddress2 = reader[4].ToString();
-                                EmailPassword2 = reader[5].ToString();
-                                EmailFooter = reader[6].ToString();
+                                UseMail = Convert.IsDBNull(reader[1]) ? Globals.ERROR : reader.GetInt32(1);
+                                EmailAddress1 = reader[2]?.ToString();
+                                EmailPassword1 = reader[3]?.ToString();
+                                EmailAddress2 = reader[4]?.ToString();
+                                EmailPassword2 = reader[5]?.ToString();
+                                EmailFooter = reader[6]?.ToString(); ;
                             }
                             else
                             {
@@ -87,8 +87,14 @@ namespace ScoreManager.Class
             {
                 using (SQLiteConnection con = new SQLiteConnection(Globals.DbConString))
                 {
-                    string query = "INSERT OR REPLACE INTO tblSettings " +
-                        "VALUES(1, @usemail, @mail1, @pass1, @mail2, @pass2, @footer);";
+                    string query = "UPDATE tblSettings SET " +
+                        "USE_EMAIL = @usemail, " +
+                        "GMAIL_USER = @mail1, " +
+                        "GMAIL_PASS = @pass1, " +
+                        "MAPUA_USER = @mail2, " +
+                        "MAPUA_PASS = @pass2, " +
+                        "EMAIL_FOOTER = @footer " +
+                        "WHERE ID = 1;";
                     using (SQLiteCommand cmd = new SQLiteCommand(query, con))
                     {
                         con.Open();

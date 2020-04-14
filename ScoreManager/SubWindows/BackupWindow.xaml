@@ -5,13 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ScoreManager.SubWindows"
         mc:Ignorable="d"
-        Title="Backup &amp; Restore Data" Height="450" Width="566" ResizeMode="NoResize">
+        Title="Backup &amp; Restore Data" Height="440" Width="566" ResizeMode="NoResize">
     <Grid>
-        <Button x:Name="btnCreateBackup" Content="CREATE BACKUP" Style="{StaticResource btnGreen}" HorizontalAlignment="Left" Margin="380,42,0,0" VerticalAlignment="Top" Width="157" Height="49" Click="BtnCreateBackup_Click"/>
-        <TextBlock HorizontalAlignment="Left" Style="{StaticResource txtHeader2}" Margin="10,10,0,0" TextWrapping="Wrap" Text="BACKUPS" VerticalAlignment="Top" Width="365"/>
-        <Button x:Name="btnDelete" Content="DELETE BACKUP" Style="{StaticResource btnRed}" HorizontalAlignment="Left" Margin="380,96,0,0" VerticalAlignment="Top" Width="157" Height="49" Click="BtnDelete_Click"/>
-        <Button x:Name="btnRestore" Content="RESTORE DATA" Style="{StaticResource btnBlue}" Margin="380,150,0,0" VerticalAlignment="Top" Height="49" Click="BtnRestore_Click" HorizontalAlignment="Left" Width="157"/>
-        <ListBox x:Name="lbBackups" HorizontalAlignment="Left" Margin="10,47,0,10" Width="365"/>
+        <Button x:Name="btnCreateBackup" Content="CREATE BACKUP" Style="{StaticResource btnGreen}" Margin="380,47,10,0" VerticalAlignment="Top" Height="49" Click="BtnCreateBackup_Click"/>
+        <TextBlock Style="{StaticResource txtHeader2}" Margin="10,10,185,0" TextWrapping="Wrap" Text="BACKUPS" Height="32" VerticalAlignment="Top"/>
+        <Button x:Name="btnDelete" Content="DELETE BACKUP" Style="{StaticResource btnRed}" Margin="380,101,10,0" VerticalAlignment="Top" Height="49" Click="BtnDelete_Click"/>
+        <Button x:Name="btnRestore" Content="RESTORE DATA" Style="{StaticResource btnBlue}" Margin="380,11,10,0" VerticalAlignment="Top" Height="31" Click="BtnRestore_Click"/>
+        <ListView x:Name="lbBackups" Margin="10,42,185,0" Height="341" VerticalAlignment="Top">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="Height" Value="25" />
+                </Style>
+            </ListView.ItemContainerStyle>
+        </ListView>
+        <CheckBox x:Name="rbAutoBackup" Margin="380,181,10,0" FontSize="18" Click="RbAutoBackup_Click" Height="72" VerticalAlignment="Top">
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Enable Auto Backup when closed?" VerticalAlignment="Top" Height="73" Width="150"/>
+        </CheckBox>
 
     </Grid>
 </Window>
