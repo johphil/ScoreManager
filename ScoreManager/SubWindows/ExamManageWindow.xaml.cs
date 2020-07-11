@@ -102,6 +102,8 @@ namespace ScoreManager.SubWindows
                 eClass.RemoveExamTerm(_e.ID, _t.ID);
                 LoadTermTable();
             }
+            else
+                MessageBox.Show("Please select a term.", "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
         }
 
         private void BtnRemoveExam_Click(object sender, RoutedEventArgs e)
@@ -118,6 +120,8 @@ namespace ScoreManager.SubWindows
                     dgSubjects.ItemsSource = null;
                 }
             }
+            else
+                MessageBox.Show("Please select an exam/class.", "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
         }
 
         private void BtnOkExam_Click(object sender, RoutedEventArgs e)
@@ -157,6 +161,11 @@ namespace ScoreManager.SubWindows
                     LoadTermTable();
                 }
             }
+            else if (dgExams.SelectedIndex == -1)
+                MessageBox.Show("Please select an exam/class.", "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            else if (cbTerm.SelectedIndex == -1)
+                MessageBox.Show("Please select a term.", "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+
         }
 
         private void BtnOkSubject_Click(object sender, RoutedEventArgs e)
@@ -176,6 +185,10 @@ namespace ScoreManager.SubWindows
                     LoadSubjectTable();
                 }
             }
+            else if (dgExams.SelectedIndex == -1)
+                MessageBox.Show("Please select an exam/class.", "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            else if (string.IsNullOrWhiteSpace(tbSubject.Text.ToString().Trim()))
+                MessageBox.Show("Please enter a subject.", "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
         }
 
         private void BtnRemoveSubject_Click(object sender, RoutedEventArgs e)
@@ -190,6 +203,8 @@ namespace ScoreManager.SubWindows
                     LoadSubjectTable();
                 }
             }
+            else
+                MessageBox.Show("Please select a subject.", "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
         }
     }
 }

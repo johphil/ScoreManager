@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ScoreManager.SubWindows"
         mc:Ignorable="d"
-        Title="Backup &amp; Restore Data" Height="440" Width="566" ResizeMode="NoResize">
+        Title="Backup &amp; Restore Data" Height="440" Width="566" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Button x:Name="btnCreateBackup" Content="CREATE BACKUP" Style="{StaticResource btnGreen}" Margin="380,47,10,0" VerticalAlignment="Top" Height="49" Click="BtnCreateBackup_Click"/>
         <TextBlock Style="{StaticResource txtHeader2}" Margin="10,10,185,0" TextWrapping="Wrap" Text="BACKUPS" Height="32" VerticalAlignment="Top"/>
@@ -18,8 +18,8 @@
                 </Style>
             </ListView.ItemContainerStyle>
         </ListView>
-        <CheckBox x:Name="rbAutoBackup" Margin="380,181,10,0" FontSize="18" Click="RbAutoBackup_Click" Height="72" VerticalAlignment="Top">
-            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Enable Auto Backup when closed?" VerticalAlignment="Top" Height="73" Width="150"/>
+        <CheckBox x:Name="rbAutoBackup" Margin="380,181,10,0" FontSize="18" Click="RbAutoBackup_Click" Height="45" VerticalAlignment="Top">
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Enable Auto Backup when closed?" VerticalAlignment="Top" Height="46" Width="150" FontSize="16"/>
         </CheckBox>
 
     </Grid>

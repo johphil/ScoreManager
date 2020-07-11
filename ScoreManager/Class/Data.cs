@@ -13,8 +13,9 @@ namespace ScoreManager.Class
     {
 
         /// <summary>
-        /// Creates a backup file of the database
+        /// Creates a backup file 
         /// </summary>
+        /// <param name="isAutoBackup">check if autobackup is enabled</param>
         public void BackupData(bool isAutoBackup)
         {
             try
@@ -32,7 +33,11 @@ namespace ScoreManager.Class
                 MessageBox.Show(ex.Message, "System Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
+        
+        /// <summary>
+        /// Returns a list of file names of all the backup in the directory
+        /// </summary>
+        /// <returns></returns>
         public List<string> GetBackupFileNames()
         {
             try
@@ -55,6 +60,10 @@ namespace ScoreManager.Class
             }
         }
 
+        /// <summary>
+        /// Delete a backup file
+        /// </summary>
+        /// <param name="FileName">Chosen backup file by the user</param>
         public void DeleteBackupFile(string FileName)
         {
             try
@@ -71,6 +80,11 @@ namespace ScoreManager.Class
             }
         }
 
+        /// <summary>
+        /// Restore the selected backup
+        /// </summary>
+        /// <param name="FileName">Selected backup file by the user</param>
+        /// <returns></returns>
         public bool RestoreBackup(string FileName)
         {
             try
@@ -89,6 +103,10 @@ namespace ScoreManager.Class
             }
         }
 
+        /// <summary>
+        /// Save autobackup settings to the database
+        /// </summary>
+        /// <param name="IsAutoBackup">Is Auto Backup enabled</param>
         public void SaveAutoBackup(int IsAutoBackup)
         {
             try
@@ -111,7 +129,11 @@ namespace ScoreManager.Class
                 MessageBox.Show(ex.Message, "Database Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
+        
+        /// <summary>
+        /// Gets the value of the auto backup settings
+        /// </summary>
+        /// <returns></returns>
         public int LoadAutoBackup()
         {
             try

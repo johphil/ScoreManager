@@ -25,6 +25,7 @@ namespace ScoreManager
         #region FIREBASE
         public _User _user;
         private IFirebaseClient fbClient;
+
         private readonly IFirebaseConfig fbConfig = new FirebaseConfig
         {
             AuthSecret = Globals.FIREBASE_SECRET,
@@ -111,6 +112,7 @@ namespace ScoreManager
                 _user.ISACTIVATED = 1;
                 await fbClient.SetTaskAsync("License/" + License, _user);
 
+                //create license file (License.txt)
                 using (StreamWriter file = new StreamWriter(Globals.LicenseFile))
                 {
                     //insert hashing
@@ -134,6 +136,7 @@ namespace ScoreManager
                         cmd.ExecuteNonQuery();
                     }
                 }
+
             }
             catch (Exception e)
             {
@@ -408,7 +411,6 @@ namespace ScoreManager
                     using (SQLiteCommand cmd = new SQLiteCommand(query, con))
                     {
                         cmd.Parameters.Add("@license", DbType.String).Value = License;
-
                         con.Open();
                         cmd.ExecuteNonQuery();
                     }

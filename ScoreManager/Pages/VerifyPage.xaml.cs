@@ -231,7 +231,7 @@ namespace ScoreManager.Pages
         {
             Refresh();
             StudentID = tbStudentNo.Text.Trim();
-            stClass.StudentInfo(StudentID, out string Name, out string Program, out string Email);
+            stClass.GetStudentInfo(StudentID, out string Name, out string Program, out string Email);
             _st = new Models._Student { ID = StudentID, NAME = Name, PROGRAM = Program, EMAIL = Email };
             txtName.Text = String.Format("{0} {1} {2}", Name, Program, Email);
             dgTerms.ItemsSource = null;

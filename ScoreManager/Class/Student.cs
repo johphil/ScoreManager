@@ -67,7 +67,7 @@ namespace ScoreManager.Class
         /// <param name="Name">Name of the student</param>
         /// <param name="Program">Program of the student (e.g. ECE)</param>
         /// <param name="Email">Email address of the student</param>
-        public void StudentInfo(string StudentID, out string Name, out string Program, out string Email)
+        public void GetStudentInfo(string StudentID, out string Name, out string Program, out string Email)
         {
             try
             {
